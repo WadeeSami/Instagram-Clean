@@ -31,15 +31,30 @@ class LoginViewController:UIViewController{
     }
     
     
-    
-    
-    
     //MARK :- UI Memebers
-    let plusButton: UIButton = {
-        let btn = UIButton()
-        btn.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
-        
-        return btn
+    
+    let signupButton: UIButton = {
+        let btnTitle = NSMutableAttributedString(string: "Don't have an account, ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+        let complementaryTitle = NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0), NSAttributedStringKey.foregroundColor: UIColor.blue])
+        btnTitle.append(complementaryTitle)
+        let button = UIButton()
+        button.setAttributedTitle(btnTitle, for: .normal)
+        button.addTarget(self, action: #selector(handleSignup), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    let logoView: UIView = {
+        let logoView = UIView()
+        logoView.translatesAutoresizingMaskIntoConstraints = false
+        let logoImageView = UIImageView(image: #imageLiteral(resourceName: "Instagram_logo_white").withRenderingMode(.alwaysOriginal))
+        logoImageView.contentMode = .scaleAspectFill
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints({ (make) in
+            make.center.equalTo(logoView)
+        })
+        return logoView
     }()
     
     let emailTextField :UITextField = {
@@ -48,15 +63,7 @@ class LoginViewController:UIViewController{
         textfield.borderStyle = .roundedRect
         textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textfield.font = UIFont.systemFont(ofSize: 14)
-        return textfield
-    }()
-    
-    let usernameTextField :UITextField = {
-        let textfield = UITextField()
-        textfield.borderStyle = .roundedRect
-        textfield.placeholder = "Username"
-        textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
-        textfield.font = UIFont.systemFont(ofSize: 14)
+        textfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return textfield
     }()
     
@@ -67,59 +74,83 @@ class LoginViewController:UIViewController{
         textfield.isSecureTextEntry = true
         textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textfield.font = UIFont.systemFont(ofSize: 14)
+        textfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
         return textfield
     }()
     
-    let signupButton: UIButton = {
+    let signinButton: UIButton = {
         let button = UIButton(type: UIButtonType.system)
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("Log in", for: .normal)
         button.backgroundColor = UIColor.rgb(red: 148, green: 204, blue: 244, alpha: 1.0)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(UIColor.white, for: .normal)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(handleSignin), for: .touchUpInside)
         return button
     }()
+    @objc func handleSignup(){
+        print ("goaaal")
+    }
     
-    let signinButton: UIButton = {
-        let btnTitle = NSMutableAttributedString(string: "Already have an account, ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        let complementaryTitle = NSAttributedString(string: "Sign In", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237, alpha: 1.0)])
-        btnTitle.append(complementaryTitle)
-        let button = UIButton()
-        button.setAttributedTitle(btnTitle, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
     
-    func setupUI(){
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        view.backgroundColor = UIColor.white
-        view.addSubview(plusButton)
-        plusButton.snp.makeConstraints { (make) in
-            make.top.equalTo(view).offset(20)
-            make.width.equalTo(140)
-            make.height.equalTo(140)
-            make.centerX.equalTo(view).offset(0)
-        }
-        let stackView = UIStackView(arrangedSubviews: [emailTextField, usernameTextField, passwordTextField, signupButton])
+    private func setupStackView()-> UIStackView{
+        let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, signinButton])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
-        stackView.spacing = 10.0
+        stackView.spacing = 10
         stackView.distribution = .fillEqually
-        
-        stackView.backgroundColor = UIColor.green
-        view.addSubview(stackView)
-        stackView.snp.makeConstraints { (stackView) in
-            stackView.top.equalTo(plusButton.snp.bottom).offset(20)
-            stackView.left.equalTo(view).offset(40)
-            stackView.right.equalTo(view).offset(-40)
-            stackView.height.equalTo(200)
+        return stackView
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    func setupUI(){
+        self.view.backgroundColor = UIColor.white
+        self.navigationController?.isNavigationBarHidden = true
+        self.view.addSubview(signupButton)
+        signupButton.snp.makeConstraints { (btn) in
+            btn.left.equalTo(self.view)
+            btn.right.equalTo(self.view)
+            btn.bottom.equalTo(self.view)
+            btn.height.equalTo(50 )
         }
         
-        view.addSubview(signinButton)
-        signinButton.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalTo(view)
-            make.height.equalTo(50)
+        self.view.addSubview(logoView)
+        logoView.snp.makeConstraints { (view) in
+            view.top.equalTo(self.view)
+            view.left.equalTo(self.view)
+            view.right.equalTo(self.view)
+            view.height.equalTo(120)
         }
+        logoView.backgroundColor = UIColor.rgb(red: 0, green: 120, blue: 175, alpha: 1.0)
+        let stackView = self.setupStackView()
+        self.view.addSubview(stackView)
+        stackView.snp.makeConstraints { (make) in
+            make.top.equalTo(logoView.snp.bottom).offset(40)
+            make.left.equalTo(self.view).offset(40)
+            make.right.equalTo(self.view).offset(-40)
+            make.height.equalTo(140)
+        }
+    }
+    
+    
+    
+    @objc func handleTextChange(){
+        let formValid = !(emailTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)!
+        
+        if formValid {
+            signinButton.isEnabled = true
+            signinButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237, alpha: 1.0)
+        }else{
+            signinButton.isEnabled = false
+            signinButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244, alpha: 1.0)
+            
+        }
+    }
+    
+    @objc func handleSignin(){
+     print ("please")
     }
 }
