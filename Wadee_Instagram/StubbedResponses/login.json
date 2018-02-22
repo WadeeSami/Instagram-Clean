@@ -1,0 +1,34 @@
+{
+    "status": "SUCCESS",
+    "status_code": 200,
+    "data": {
+        "status": "ACTIVE",
+        "first_name": "Ahmad",
+        "last_name": "Darwazeh",
+        "user_profile": {
+            "license_number": "123123123",
+            "about": "AhmadA",
+            "npi": "987654321",
+            "id": 1
+        },
+        "profile_image": {
+            "href_big": "https://s3.amazonaws.com/med-click-dev/users/11/profile_image/bd50f1fe901145dcbb5e5119e6697f5c/640_640.JPEG",
+            "href_original": "https://s3.amazonaws.com/med-click-dev/users/11/profile_image/bd50f1fe901145dcbb5e5119e6697f5c/original.JPEG",
+            "href_small": "https://s3.amazonaws.com/med-click-dev/users/11/profile_image/bd50f1fe901145dcbb5e5119e6697f5c/240_240.JPEG"
+        },
+        "email": "test@test.com",
+        "phone": "059810379K",
+        "user_country_code": {
+            "name": "ARGENTINA",
+            "phone_code": 54,
+            "iso3": "ARG",
+            "flag": "🇦🇷",
+            "iso": "AR",
+            "number_code": 32,
+            "nice_name": "Argentina",
+            "id": 10
+        },
+        "last_login": "Feb 20, 2018 09:29:46 GMT",
+        "id": 11
+    }
+}

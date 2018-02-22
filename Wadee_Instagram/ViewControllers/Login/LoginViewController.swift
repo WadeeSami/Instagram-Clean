@@ -10,13 +10,14 @@ import UIKit
 import SnapKit
 
 class LoginViewController:UIViewController{
-    // MARK : ViewModel
+    // MARK: ViewModel
     fileprivate var viewModel :LoginViewModel?
     
-    // MARK : initializers
+    // MARK: initializers
     init(with loginViewModel: LoginViewModel) {
         super.init(nibName: nil, bundle: nil)
         self.viewModel = loginViewModel
+                self.viewModel?.loginVMDelegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -24,18 +25,18 @@ class LoginViewController:UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK :- Lifecycle
+    //MARK:- Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
     
     
-    //MARK :- UI Memebers
+    //MARK:- UI Memebers
     
     let signupButton: UIButton = {
         let btnTitle = NSMutableAttributedString(string: "Don't have an account, ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
-        let complementaryTitle = NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0), NSAttributedStringKey.foregroundColor: UIColor.blue])
+        let complementaryTitle = NSAttributedString(string: "Sign Up", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14.0), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 0, green: 120, blue: 175, alpha: 1.0)])
         btnTitle.append(complementaryTitle)
         let button = UIButton()
         button.setAttributedTitle(btnTitle, for: .normal)
@@ -63,7 +64,8 @@ class LoginViewController:UIViewController{
         textfield.borderStyle = .roundedRect
         textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textfield.font = UIFont.systemFont(ofSize: 14)
-        textfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        textfield.addTarget(self, action: #selector(handleEmailChange), for: .editingChanged)
+        textfield.addTarget(self, action: #selector(didEndEdittingEmail), for: .editingDidEnd)
         return textfield
     }()
     
@@ -74,24 +76,23 @@ class LoginViewController:UIViewController{
         textfield.isSecureTextEntry = true
         textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textfield.font = UIFont.systemFont(ofSize: 14)
-        textfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        textfield.addTarget(self, action: #selector(handlePasswordChange), for: .editingChanged)
         return textfield
     }()
     
     let signinButton: UIButton = {
         let button = UIButton(type: UIButtonType.system)
         button.setTitle("Log in", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 148, green: 204, blue: 244, alpha: 1.0)
+        button.backgroundColor = UIColor.rgb(red: 0, green: 120, blue: 175, alpha: 1.0)
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.isEnabled = false
+        button.isEnabled = true
         button.addTarget(self, action: #selector(handleSignin), for: .touchUpInside)
         return button
     }()
-    @objc func handleSignup(){
-        print ("goaaal")
-    }
+    
+    
     
     
     private func setupStackView()-> UIStackView{
@@ -103,9 +104,11 @@ class LoginViewController:UIViewController{
         return stackView
     }
     
+    // MARK: Private Methods
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return .lightContent
     }
+    
     func setupUI(){
         self.view.backgroundColor = UIColor.white
         self.navigationController?.isNavigationBarHidden = true
@@ -136,21 +139,60 @@ class LoginViewController:UIViewController{
     }
     
     
+    //MARK:- Event Handlers
+    @objc func handlePasswordChange(){
+        self.viewModel?.password = passwordTextField.text
+    }
     
-    @objc func handleTextChange(){
-        let formValid = !(emailTextField.text?.isEmpty)! && !(passwordTextField.text?.isEmpty)!
-        
-        if formValid {
-            signinButton.isEnabled = true
-            signinButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237, alpha: 1.0)
-        }else{
-            signinButton.isEnabled = false
-            signinButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244, alpha: 1.0)
-            
-        }
+    @objc func handleEmailChange(){
+        self.viewModel?.email = emailTextField.text
     }
     
     @objc func handleSignin(){
-     print ("please")
+        //validate
+        if (emailTextField.text?.isEmpty)! || (emailTextField.text?.isEmpty)!{
+            //show allert
+            let alertController = UIAlertController(title: "Error", message: "Please Fill Out All Fields", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(alertAction)
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
+        
+        self.viewModel?.signin(){ error in
+            if let error = error{
+                print ("Something Wrong ")
+                print(error.localizedDescription)
+            }else{
+                print ("Loggin In Successfully")
+            }
+        }
+        
     }
+    
+    @objc func handleSignup(){
+        self.viewModel?.goToSignUp()
+    }
+    
+    @objc func didEndEdittingEmail(){
+        print ("Hello")
+        let emailText = emailTextField.text
+        if !emailText!.isEmpty{
+            self.viewModel?.email = emailText
+        }
+    }
+    
+}
+
+
+extension LoginViewController: LoginViewModelDelegate{
+    func invalidFieldsFormatUsed(errorMessage: String) {
+        let alertController = UIAlertController(title: "Error", message: "Invaid Format", preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(alertAction)
+        self.present(alertController, animated: true, completion: nil)
+        return
+    }
+    
+    
 }

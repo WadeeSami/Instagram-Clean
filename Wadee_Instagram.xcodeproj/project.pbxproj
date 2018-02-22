@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5813AD74203D460500149551 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 5813AD73203D460500149551 /* login.json */; };
+		5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5813AD76203D478E00149551 /* InstagramAPI.swift */; };
+		5813AD79203D4C8800149551 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5813AD78203D4C8800149551 /* Networking.swift */; };
 		582530EC2036FBFB003AB8A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582530EB2036FBFB003AB8A4 /* AppDelegate.swift */; };
 		582530EE2036FBFB003AB8A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582530ED2036FBFB003AB8A4 /* ViewController.swift */; };
 		582530F12036FBFB003AB8A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582530EF2036FBFB003AB8A4 /* Main.storyboard */; };
@@ -15,6 +18,10 @@
 		582531012036FBFB003AB8A4 /* Wadee_InstagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582531002036FBFB003AB8A4 /* Wadee_InstagramTests.swift */; };
 		5825310C2036FBFB003AB8A4 /* Wadee_InstagramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5825310B2036FBFB003AB8A4 /* Wadee_InstagramUITests.swift */; };
 		58677283203771410037CEF3 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58677282203771410037CEF3 /* RootViewController.swift */; };
+		587166EF203CB1600012746F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587166EE203CB1600012746F /* Validator.swift */; };
+		589DB8C6203ECC2E005CB8CC /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8C5203ECC2E005CB8CC /* SignupViewModel.swift */; };
+		589DB8C9203ECC75005CB8CC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8C8203ECC75005CB8CC /* SignupViewController.swift */; };
+		589DB8CD203F154E005CB8CC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8CC203F154E005CB8CC /* UIView.swift */; };
 		58D05AAB203B5A60005B0298 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AAA203B5A60005B0298 /* Coordinator.swift */; };
 		58D05AAD203B5A88005B0298 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AAC203B5A88005B0298 /* AppCoordinator.swift */; };
 		58D05AB2203B5F35005B0298 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AB1203B5F35005B0298 /* AuthCoordinator.swift */; };
@@ -45,6 +52,9 @@
 
 /* Begin PBXFileReference section */
 		369906ECDE65BCFC9DDB7AD6 /* Pods-Wadee_Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wadee_Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wadee_Instagram/Pods-Wadee_Instagram.debug.xcconfig"; sourceTree = "<group>"; };
+		5813AD73203D460500149551 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		5813AD76203D478E00149551 /* InstagramAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramAPI.swift; sourceTree = "<group>"; };
+		5813AD78203D4C8800149551 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		582530E82036FBFB003AB8A4 /* Wadee_Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wadee_Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		582530EB2036FBFB003AB8A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		582530ED2036FBFB003AB8A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +69,10 @@
 		5825310B2036FBFB003AB8A4 /* Wadee_InstagramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wadee_InstagramUITests.swift; sourceTree = "<group>"; };
 		5825310D2036FBFB003AB8A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58677282203771410037CEF3 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		587166EE203CB1600012746F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		589DB8C5203ECC2E005CB8CC /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		589DB8C8203ECC75005CB8CC /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		589DB8CC203F154E005CB8CC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		58D05AAA203B5A60005B0298 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		58D05AAC203B5A88005B0298 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		58D05AB1203B5F35005B0298 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -113,6 +127,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5813AD72203D45D900149551 /* StubbedResponses */ = {
+			isa = PBXGroup;
+			children = (
+				5813AD73203D460500149551 /* login.json */,
+			);
+			path = StubbedResponses;
+			sourceTree = "<group>";
+		};
+		5813AD75203D477B00149551 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				5813AD76203D478E00149551 /* InstagramAPI.swift */,
+				5813AD78203D4C8800149551 /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		582530DF2036FBFB003AB8A4 = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +169,9 @@
 		582530EA2036FBFB003AB8A4 /* Wadee_Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				5813AD75203D477B00149551 /* Networking */,
+				5813AD72203D45D900149551 /* StubbedResponses */,
+				587166ED203CB1510012746F /* Utils */,
 				582530F72036FBFB003AB8A4 /* Info.plist */,
 				58D05AB9203B6190005B0298 /* Extensions */,
 				58D05AB0203B5EF2005B0298 /* Supporing Files */,
@@ -172,6 +206,30 @@
 			path = Wadee_InstagramUITests;
 			sourceTree = "<group>";
 		};
+		587166ED203CB1510012746F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				587166EE203CB1600012746F /* Validator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		589DB8C4203ECC1B005CB8CC /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				589DB8C5203ECC2E005CB8CC /* SignupViewModel.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
+		589DB8C7203ECC67005CB8CC /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				589DB8C8203ECC75005CB8CC /* SignupViewController.swift */,
+			);
+			path = Signup;
+			sourceTree = "<group>";
+		};
 		58D05AA4203B595E005B0298 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +243,7 @@
 		58D05AA5203B596B005B0298 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				589DB8C4203ECC1B005CB8CC /* Signup */,
 				58D05AB6203B6030005B0298 /* Login */,
 			);
 			path = ViewModels;
@@ -231,6 +290,7 @@
 		58D05AAF203B5EE1005B0298 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				589DB8C7203ECC67005CB8CC /* Signup */,
 				58D05AB5203B6026005B0298 /* Login */,
 				582530ED2036FBFB003AB8A4 /* ViewController.swift */,
 				58677282203771410037CEF3 /* RootViewController.swift */,
@@ -265,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				58D05ABA203B619E005B0298 /* UIColor.swift */,
+				589DB8CC203F154E005CB8CC /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,6 +462,7 @@
 				582530F62036FBFB003AB8A4 /* LaunchScreen.storyboard in Resources */,
 				582530F32036FBFB003AB8A4 /* Assets.xcassets in Resources */,
 				582530F12036FBFB003AB8A4 /* Main.storyboard in Resources */,
+				5813AD74203D460500149551 /* login.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,12 +637,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589DB8CD203F154E005CB8CC /* UIView.swift in Sources */,
 				58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */,
 				58D05AAB203B5A60005B0298 /* Coordinator.swift in Sources */,
+				587166EF203CB1600012746F /* Validator.swift in Sources */,
+				5813AD79203D4C8800149551 /* Networking.swift in Sources */,
+				5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */,
 				582530EE2036FBFB003AB8A4 /* ViewController.swift in Sources */,
 				58D05AAD203B5A88005B0298 /* AppCoordinator.swift in Sources */,
 				58D05ABB203B619E005B0298 /* UIColor.swift in Sources */,
+				589DB8C9203ECC75005CB8CC /* SignupViewController.swift in Sources */,
 				58D05AB8203B603A005B0298 /* LoginViewModel.swift in Sources */,
+				589DB8C6203ECC2E005CB8CC /* SignupViewModel.swift in Sources */,
 				58D05AB2203B5F35005B0298 /* AuthCoordinator.swift in Sources */,
 				582530EC2036FBFB003AB8A4 /* AppDelegate.swift in Sources */,
 				58677283203771410037CEF3 /* RootViewController.swift in Sources */,
