@@ -41,6 +41,8 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
+//    var na
+    
     //MARK: UI Components
     let plusButton: UIButton = {
         let btn = UIButton()
@@ -56,7 +58,7 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
         textfield.borderStyle = .roundedRect
         textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textfield.font = UIFont.systemFont(ofSize: 14)
-        textfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        textfield.addTarget(self, action: #selector(handleEmailChange), for: .editingChanged)
         return textfield
     }()
     
@@ -66,7 +68,7 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
         textfield.placeholder = "Username"
         textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textfield.font = UIFont.systemFont(ofSize: 14)
-        textfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        textfield.addTarget(self, action: #selector(handleUsernameChange), for: .editingChanged)
         return textfield
     }()
     
@@ -77,7 +79,7 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
         textfield.isSecureTextEntry = true
         textfield.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textfield.font = UIFont.systemFont(ofSize: 14)
-        textfield.addTarget(self, action: #selector(handleTextChange), for: .editingChanged)
+        textfield.addTarget(self, action: #selector(handlePasswordChange), for: .editingChanged)
         return textfield
     }()
     
@@ -137,42 +139,43 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
     
     
     @objc func handleSignup(){
-        
-        guard  self.view.validateAllTextFieldsNotEmpty() == true else{
+        guard allFieldsNotEmpty() else{
             return
         }
-        self.viewModel?.signup()
+        
+        do{
+            try self.viewModel?.signup()
+        }catch let error{
+            if let validError = error as? InstagramErrorType{
+                self.displayValidationErrorAlert(forError: validError)
+            }else{
+                print ("Some weird error")
+            }
+        }
     }
     
-    @objc func handleTextChange(){
-
+    @objc func handlePasswordChange(){
+        self.viewModel?.password = self.passwordTextField.text
+    }
+    
+    @objc func handleEmailChange(){
+            self.viewModel?.email = self.emailTextField.text
+    }
+    
+    @objc func handleUsernameChange(){
+        self.viewModel?.username = self.usernameTextField.text
     }
     
     @objc func addProfileButton(){
         self.coordinator?.showImagePicker()
-//        let imagePickerController = UIImagePickerController()
-//        imagePickerController.delegate = self
-//        imagePickerController.allowsEditing = true
-//        present(imagePickerController, animated: true, completion: nil)
     }
     
     @objc func handleSignin(){
         self.viewModel?.goToLogin()
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//        plusButton.layer.cornerRadius = plusButton.frame.width/2
-//        plusButton.layer.borderColor = UIColor.black.cgColor
-//        plusButton.layer.borderWidth = 3.0
-//        plusButton.clipsToBounds = true
-//
-//        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage {
-//            plusButton.setImage(editedImage.withRenderingMode(.alwaysOriginal), for: .normal)
-//        }else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage{
-//            plusButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
-//        }
-//
-//        dismiss(animated: true, completion: nil)
+    private func allFieldsNotEmpty()->Bool{
+        return self.view.validateAllTextFieldsNotEmpty() && self.selectedProfileImage != nil
     }
     
 }

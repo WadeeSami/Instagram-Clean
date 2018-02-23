@@ -20,4 +20,8 @@ class Validator{
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
     }
+    
+    static func validateUsername(username:String)->Bool{
+        return true
+    }
 }

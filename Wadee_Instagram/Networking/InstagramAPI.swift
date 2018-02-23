@@ -10,6 +10,7 @@ import Foundation
 
 enum InstagramAPI{
     case login
+    case signup
 }
 
 
@@ -19,7 +20,11 @@ extension InstagramAPI{
         switch self {
         case .login:
             return stubbedResponse(filename: "login")
+        case .signup:
+            return stubbedResponse(filename: "signup")
         }
+        
+        
     }
 }
 

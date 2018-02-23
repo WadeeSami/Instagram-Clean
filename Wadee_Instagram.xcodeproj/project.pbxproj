@@ -22,12 +22,16 @@
 		589DB8C6203ECC2E005CB8CC /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8C5203ECC2E005CB8CC /* SignupViewModel.swift */; };
 		589DB8C9203ECC75005CB8CC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8C8203ECC75005CB8CC /* SignupViewController.swift */; };
 		589DB8CD203F154E005CB8CC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8CC203F154E005CB8CC /* UIView.swift */; };
+		589DB8D1203F401C005CB8CC /* UserComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8D0203F401C005CB8CC /* UserComponent.swift */; };
+		589DB8D3203F4CFB005CB8CC /* signup.json in Resources */ = {isa = PBXBuildFile; fileRef = 589DB8D2203F4CFB005CB8CC /* signup.json */; };
 		58D05AAB203B5A60005B0298 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AAA203B5A60005B0298 /* Coordinator.swift */; };
 		58D05AAD203B5A88005B0298 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AAC203B5A88005B0298 /* AppCoordinator.swift */; };
 		58D05AB2203B5F35005B0298 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AB1203B5F35005B0298 /* AuthCoordinator.swift */; };
 		58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AB3203B601F005B0298 /* LoginViewController.swift */; };
 		58D05AB8203B603A005B0298 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AB7203B603A005B0298 /* LoginViewModel.swift */; };
 		58D05ABB203B619E005B0298 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05ABA203B619E005B0298 /* UIColor.swift */; };
+		58D815762040063000E9F58E /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D815752040063000E9F58E /* Exceptions.swift */; };
+		58D815782040180000E9F58E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D815772040180000E9F58E /* UIViewController.swift */; };
 		A6AAD14DAF1CAE7EF48480F1 /* Pods_Wadee_InstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F91A6871D9713DA908D30AA1 /* Pods_Wadee_InstagramTests.framework */; };
 		AAE24F70E3D37958F420FC25 /* Pods_Wadee_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D70483C31FCC4AD4EDE872C2 /* Pods_Wadee_Instagram.framework */; };
 		E2240F3B1532A3EC5EEE1B02 /* Pods_Wadee_InstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC2860A899B17026B9F13E4C /* Pods_Wadee_InstagramUITests.framework */; };
@@ -73,12 +77,16 @@
 		589DB8C5203ECC2E005CB8CC /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		589DB8C8203ECC75005CB8CC /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		589DB8CC203F154E005CB8CC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		589DB8D0203F401C005CB8CC /* UserComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserComponent.swift; sourceTree = "<group>"; };
+		589DB8D2203F4CFB005CB8CC /* signup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = signup.json; sourceTree = "<group>"; };
 		58D05AAA203B5A60005B0298 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		58D05AAC203B5A88005B0298 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		58D05AB1203B5F35005B0298 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		58D05AB3203B601F005B0298 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		58D05AB7203B603A005B0298 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		58D05ABA203B619E005B0298 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		58D815752040063000E9F58E /* Exceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
+		58D815772040180000E9F58E /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		680D2EB7FF6459C38A47AC04 /* Pods-Wadee_InstagramTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wadee_InstagramTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wadee_InstagramTests/Pods-Wadee_InstagramTests.debug.xcconfig"; sourceTree = "<group>"; };
 		71ACC45E117715F738ECB770 /* Pods-Wadee_InstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wadee_InstagramUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wadee_InstagramUITests/Pods-Wadee_InstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9F9DCA5E77D323522207C761 /* Pods-Wadee_InstagramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wadee_InstagramUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wadee_InstagramUITests/Pods-Wadee_InstagramUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -131,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				5813AD73203D460500149551 /* login.json */,
+				589DB8D2203F4CFB005CB8CC /* signup.json */,
 			);
 			path = StubbedResponses;
 			sourceTree = "<group>";
@@ -230,6 +239,14 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
+		589DB8CE203F3FEE005CB8CC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				589DB8D0203F401C005CB8CC /* UserComponent.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		58D05AA4203B595E005B0298 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +269,7 @@
 		58D05AA6203B5971005B0298 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				589DB8CE203F3FEE005CB8CC /* Components */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -275,6 +293,7 @@
 		58D05AA9203B5990005B0298 /* Configurations */ = {
 			isa = PBXGroup;
 			children = (
+				58D815752040063000E9F58E /* Exceptions.swift */,
 			);
 			path = Configurations;
 			sourceTree = "<group>";
@@ -326,6 +345,7 @@
 			children = (
 				58D05ABA203B619E005B0298 /* UIColor.swift */,
 				589DB8CC203F154E005CB8CC /* UIView.swift */,
+				58D815772040180000E9F58E /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -459,6 +479,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				589DB8D3203F4CFB005CB8CC /* signup.json in Resources */,
 				582530F62036FBFB003AB8A4 /* LaunchScreen.storyboard in Resources */,
 				582530F32036FBFB003AB8A4 /* Assets.xcassets in Resources */,
 				582530F12036FBFB003AB8A4 /* Main.storyboard in Resources */,
@@ -637,6 +658,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D815762040063000E9F58E /* Exceptions.swift in Sources */,
+				589DB8D1203F401C005CB8CC /* UserComponent.swift in Sources */,
+				58D815782040180000E9F58E /* UIViewController.swift in Sources */,
 				589DB8CD203F154E005CB8CC /* UIView.swift in Sources */,
 				58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */,
 				58D05AAB203B5A60005B0298 /* Coordinator.swift in Sources */,

@@ -25,12 +25,20 @@ struct SignupViewModel{
     var username:String?
     var email:String?
     var password:String?
-    
+    var profileImage: UIImage?
     
     //MARK: API methods
-    func signup(){
-        
-//        self.signupCoordinatorDelegate?.userDidSignUp()
+    func signup()throws{
+        try validateSignupMembers()
+        UserComponent.signUp(withUsername: self.username!, email: self.email!, andPassword: self.password!){ userInfo, error in
+            if let error = error{
+                //do something !!
+                print(error.localizedDescription)
+            }else{
+                print("signupSuccessfully")
+            }
+        }
+        self.signupCoordinatorDelegate?.userDidSignUp()
     }
     
     func goToLogin(){
@@ -38,7 +46,18 @@ struct SignupViewModel{
     }
     
     //MARK: private methods
-    private func validateSignupMembers()->Bool{
-        return Validator.validateEmail(email: self.email!) && Validator.validatePassword(password: self.password!)
+    private func validateSignupMembers()throws{
+        guard Validator.validateEmail(email: self.email!) else{
+            throw FieldValidationError.InvalidEmail
+        }
+        
+        guard Validator.validatePassword(password: self.password!) else{
+            throw FieldValidationError.InvalidPassword
+        }
+        
+        guard Validator.validateUsername(username: self.username!) else{
+            throw FieldValidationError.InvalidUsername
+        }
+        
     }
 }

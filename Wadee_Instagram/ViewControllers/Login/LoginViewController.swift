@@ -175,7 +175,6 @@ class LoginViewController:UIViewController{
     }
     
     @objc func didEndEdittingEmail(){
-        print ("Hello")
         let emailText = emailTextField.text
         if !emailText!.isEmpty{
             self.viewModel?.email = emailText

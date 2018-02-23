@@ -1,0 +1,44 @@
+
+{
+"status": "SUCCESS",
+"status_code": 200,
+"data": {
+"status": "ACTIVE",
+"first_name": "TestWade",
+"last_name": "Young Sang!!!",
+"user_profile": {
+"license_number": "1346637386",
+"about": null,
+"npi": "13466373973",
+"speciality": {
+"category": {
+"code": "neurological-surgery",
+"id": 10,
+"name": "Neurological Surgery"
+},
+"code": "neurological-surgery",
+"name": "Neurological Surgery",
+"id": 10
+},
+"id": 110
+},
+"profile_image": {},
+"user_type": "DOCTOR",
+"email": "cc@MMccML.com",
+"phone": "0598103798",
+"is_admin": false,
+"user_country_code": {
+"name": "AUSTRIA",
+"phone_code": 43,
+"iso3": "AUT",
+"flag": "🇦🇹",
+"iso": "AT",
+"number_code": 40,
+"nice_name": "Austria",
+"id": 14
+},
+"last_login": null,
+"document_verification_status": "NOT_VERIFIED",
+"id": 184
+}
+}
