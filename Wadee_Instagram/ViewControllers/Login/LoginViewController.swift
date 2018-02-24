@@ -150,21 +150,16 @@ class LoginViewController:UIViewController{
     
     @objc func handleSignin(){
         //validate
-        if (emailTextField.text?.isEmpty)! || (emailTextField.text?.isEmpty)!{
-            //show allert
-            let alertController = UIAlertController(title: "Error", message: "Please Fill Out All Fields", preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alertController.addAction(alertAction)
-            self.present(alertController, animated: true, completion: nil)
+        
+        guard allFieldsNotEmpty() else {
             return
         }
         
-        self.viewModel?.signin(){ error in
-            if let error = error{
-                print ("Something Wrong ")
-                print(error.localizedDescription)
-            }else{
-                print ("Loggin In Successfully")
+        do{
+            try self.viewModel?.signin()
+        }catch let e{
+            if let valError = e as? FieldValidationError{
+                self.displayValidationErrorAlert(forError: valError)
             }
         }
         
@@ -180,9 +175,12 @@ class LoginViewController:UIViewController{
             self.viewModel?.email = emailText
         }
     }
-    
-}
 
+    //MARK: private methifs
+    private func allFieldsNotEmpty()->Bool{
+        return self.view.validateAllTextFieldsNotEmpty()
+    }
+}
 
 extension LoginViewController: LoginViewModelDelegate{
     func invalidFieldsFormatUsed(errorMessage: String) {

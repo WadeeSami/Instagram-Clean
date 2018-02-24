@@ -36,25 +36,26 @@ class LoginViewModel{
     var password: String?
     
     
-    func signin(completionHandler: @escaping (_ error:Error?) -> ())  {
-        if !self.validateLoginParams(email:self.email! , password: self.password!){
-            self.loginVMDelegate?.invalidFieldsFormatUsed(errorMessage: "Invalid Fields")
-            return
-        }
+    func signin()throws  {
+        try validateLoginParams(email: self.email!, password: self.password!)
         let loginEndpoint = InstagramAPI.login
         let response = loginEndpoint.testingData
         let res = try? JSONSerialization.jsonObject(with: response, options: []) as! [String:Any]
         if res!["status_code"] as! Int != 200{
-            completionHandler(LoginError.InvalidCredintials)
+            print ("Logged In User")
         }else{
-            completionHandler(nil)
             self.loginCoordinatorDelegate?.userDidLogin()
         }
     }
     
     
-    private func validateLoginParams(email:String, password:String)->Bool {
-        return Validator.validatePassword(password: password) && Validator.validateEmail(email: email)
+    private func validateLoginParams(email:String, password:String)throws {
+        guard Validator.validatePassword(password: password) else{
+            throw FieldValidationError.InvalidPassword
+        }
+        guard Validator.validateEmail(email: email) else{
+            throw FieldValidationError.InvalidEmail
+        }
     }
     
     func goToSignUp(){

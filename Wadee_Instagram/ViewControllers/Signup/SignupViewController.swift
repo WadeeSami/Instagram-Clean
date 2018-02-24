@@ -41,8 +41,6 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
         }
     }
     
-//    var na
-    
     //MARK: UI Components
     let plusButton: UIButton = {
         let btn = UIButton()
