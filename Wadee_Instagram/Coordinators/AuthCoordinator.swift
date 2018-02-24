@@ -9,11 +9,12 @@
 import UIKit
 
 protocol AuthCoordinatorDelegate{
-    func userDidChooseSignup()
     func userDidAuthenticate()
 }
 
 class AuthCoordinator :NSObject, Coordinator{
+    //MARK: delegate
+    var authCoordinatorDelegate:AuthCoordinatorDelegate?
     // MARK :- API
     var childCoordinators: [Coordinator] = []
     
@@ -55,6 +56,7 @@ extension AuthCoordinator: LoginViewModelCoordinatorDelegate{
     func userDidLogin() {
         //go to profile
         print("Heading Directry to the profile")
+        self.authCoordinatorDelegate?.userDidAuthenticate()
     }
     
     func userDidChooseSignup() {

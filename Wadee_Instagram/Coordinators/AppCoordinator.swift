@@ -16,7 +16,7 @@ class AppCoordinator :Coordinator{
     
     fileprivate let rootViewController: UINavigationController!
     
-    fileprivate  var isLoggedIn = false
+    fileprivate  var isLoggedIn = true
     
     // MARK : Initializers
     init(with rootViewControler:UINavigationController) {
@@ -27,6 +27,7 @@ class AppCoordinator :Coordinator{
         //check for auth and session
         if self.isLoggedIn {
             // show profile page
+            self.startProfileFlow()
         }else {
             self.startAuthenticationFlow()
             print ("starting te auth flow")
@@ -48,10 +49,28 @@ class AppCoordinator :Coordinator{
 extension AppCoordinator{
     func startAuthenticationFlow(){
         let authCoordinator = AuthCoordinator(with: self.rootViewController)
+        authCoordinator.authCoordinatorDelegate = self
         self.addChildCoordinator(coordinator: authCoordinator)
         //register any deligate !
         authCoordinator.start()
     }
+    
+    func startProfileFlow(){
+        let profileCoordinator = ProfileCoordinator(with: self.rootViewController)
+        self.addChildCoordinator(coordinator: profileCoordinator)
+        profileCoordinator.start()
+    }
+    
 }
 //extension for sub coordinators
-
+extension AppCoordinator: AuthCoordinatorDelegate{
+    
+    func userDidAuthenticate() {
+        //remove auth coordinator
+        
+        //start profile coordinator
+        self.startProfileFlow()
+    }
+    
+    
+}

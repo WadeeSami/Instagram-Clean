@@ -9,6 +9,14 @@
 import Foundation
 
 struct SimpleNetworkUtility : NetworkLayer{
+    #if DEVELOPMENT
+    let SERVER_URL = "http://localhost/api/v1"
+    let API_TOKEN = "asfasdadasdass"
+    #else
+    let SERVER_URL = "http://dev.localhost.com/api/v1"
+    let API_TOKEN = "fgbfkbkgbmkgbm"
+    #endif
+    
     static var baseUrl: URL = URL(string: "http//localhost:8080/")!
     static func performGetRequest(fromUrl url: URL, successHandler: @escaping successHandler, failureHandler: @escaping failureHandler) {
         URLSession.shared.dataTask(with: url){ (data, response, error) in
