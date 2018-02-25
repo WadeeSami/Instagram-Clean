@@ -18,7 +18,7 @@ class ProfileCoordinator:NSObject, Coordinator{
     
     func start() {
         let profileViewModel = ProfileViewModel()
-        let profileViewController = ProfileViewController()
+        let profileViewController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
         profileViewController.viewModel = profileViewModel
         profileViewController.coordinator = self
         self.rootViewController.show(profileViewController, sender: self)
