@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58120B862043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58120B852043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift */; };
+		58120B882043E79A004C9C01 /* HeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58120B872043E79A004C9C01 /* HeaderCellViewModel.swift */; };
 		5813AD74203D460500149551 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 5813AD73203D460500149551 /* login.json */; };
 		5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5813AD76203D478E00149551 /* InstagramAPI.swift */; };
 		5813AD79203D4C8800149551 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5813AD78203D4C8800149551 /* Networking.swift */; };
@@ -92,6 +94,8 @@
 
 /* Begin PBXFileReference section */
 		369906ECDE65BCFC9DDB7AD6 /* Pods-Wadee_Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wadee_Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wadee_Instagram/Pods-Wadee_Instagram.debug.xcconfig"; sourceTree = "<group>"; };
+		58120B852043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewHeaderCell.swift; sourceTree = "<group>"; };
+		58120B872043E79A004C9C01 /* HeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellViewModel.swift; sourceTree = "<group>"; };
 		5813AD73203D460500149551 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		5813AD76203D478E00149551 /* InstagramAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramAPI.swift; sourceTree = "<group>"; };
 		5813AD78203D4C8800149551 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
@@ -187,6 +191,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		58120B842043E6FC004C9C01 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				58120B852043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		5813AD72203D45D900149551 /* StubbedResponses */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,8 +285,10 @@
 		582F133C2041F0C2000395E8 /* UserProfile */ = {
 			isa = PBXGroup;
 			children = (
+				58120B842043E6FC004C9C01 /* Cells */,
 				582F133D2041F0DD000395E8 /* ProfileViewController.swift */,
 				582F133F2041F269000395E8 /* ProfileViewModel.swift */,
+				58120B872043E79A004C9C01 /* HeaderCellViewModel.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -795,6 +809,7 @@
 				58D8157E2040B37800E9F58E /* SimpleNetworkUtility.swift in Sources */,
 				589DB8CD203F154E005CB8CC /* UIView.swift in Sources */,
 				58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */,
+				58120B862043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift in Sources */,
 				582F133E2041F0DD000395E8 /* ProfileViewController.swift in Sources */,
 				58D05AAB203B5A60005B0298 /* Coordinator.swift in Sources */,
 				587166EF203CB1600012746F /* Validator.swift in Sources */,
@@ -813,6 +828,7 @@
 				582530EC2036FBFB003AB8A4 /* AppDelegate.swift in Sources */,
 				58677283203771410037CEF3 /* RootViewController.swift in Sources */,
 				58D8157A204086CE00E9F58E /* User.swift in Sources */,
+				58120B882043E79A004C9C01 /* HeaderCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
