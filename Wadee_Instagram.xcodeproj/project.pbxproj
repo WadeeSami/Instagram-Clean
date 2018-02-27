@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5810DE7B2045DB42008F3F5D /* RegularDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810DE7A2045DB42008F3F5D /* RegularDispatcher.swift */; };
+		5810DE7D2045ECEA008F3F5D /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810DE7C2045ECEA008F3F5D /* Task.swift */; };
+		5810DE7F2045ED73008F3F5D /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5810DE7E2045ED73008F3F5D /* LoginTask.swift */; };
 		58120B862043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58120B852043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift */; };
 		58120B882043E79A004C9C01 /* HeaderCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58120B872043E79A004C9C01 /* HeaderCellViewModel.swift */; };
 		5813AD74203D460500149551 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 5813AD73203D460500149551 /* login.json */; };
@@ -61,6 +64,9 @@
 		589DB8D3203F4CFB005CB8CC /* signup.json in Resources */ = {isa = PBXBuildFile; fileRef = 589DB8D2203F4CFB005CB8CC /* signup.json */; };
 		58C6683E20449D5500A5CBCF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C6683D20449D5500A5CBCF /* Request.swift */; };
 		58C6684220449F9C00A5CBCF /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C6684120449F9C00A5CBCF /* LoginRequest.swift */; };
+		58C668442044A43F00A5CBCF /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C668432044A43F00A5CBCF /* SignupRequest.swift */; };
+		58C668462044A55E00A5CBCF /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C668452044A55E00A5CBCF /* Dispatcher.swift */; };
+		58C668482044A81A00A5CBCF /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C668472044A81A00A5CBCF /* Response.swift */; };
 		58D05AAB203B5A60005B0298 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AAA203B5A60005B0298 /* Coordinator.swift */; };
 		58D05AAD203B5A88005B0298 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AAC203B5A88005B0298 /* AppCoordinator.swift */; };
 		58D05AB2203B5F35005B0298 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AB1203B5F35005B0298 /* AuthCoordinator.swift */; };
@@ -96,6 +102,9 @@
 
 /* Begin PBXFileReference section */
 		369906ECDE65BCFC9DDB7AD6 /* Pods-Wadee_Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wadee_Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wadee_Instagram/Pods-Wadee_Instagram.debug.xcconfig"; sourceTree = "<group>"; };
+		5810DE7A2045DB42008F3F5D /* RegularDispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularDispatcher.swift; sourceTree = "<group>"; };
+		5810DE7C2045ECEA008F3F5D /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		5810DE7E2045ED73008F3F5D /* LoginTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		58120B852043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewHeaderCell.swift; sourceTree = "<group>"; };
 		58120B872043E79A004C9C01 /* HeaderCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCellViewModel.swift; sourceTree = "<group>"; };
 		5813AD73203D460500149551 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
@@ -128,6 +137,9 @@
 		589DB8D2203F4CFB005CB8CC /* signup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = signup.json; sourceTree = "<group>"; };
 		58C6683D20449D5500A5CBCF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		58C6684120449F9C00A5CBCF /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		58C668432044A43F00A5CBCF /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
+		58C668452044A55E00A5CBCF /* Dispatcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		58C668472044A81A00A5CBCF /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		58D05AAA203B5A60005B0298 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		58D05AAC203B5A88005B0298 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		58D05AB1203B5F35005B0298 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -221,6 +233,8 @@
 				5813AD78203D4C8800149551 /* Networking.swift */,
 				58D8157B2040B1C600E9F58E /* NetworkLayer.swift */,
 				58D8157D2040B37800E9F58E /* SimpleNetworkUtility.swift */,
+				5810DE7A2045DB42008F3F5D /* RegularDispatcher.swift */,
+				5810DE7E2045ED73008F3F5D /* LoginTask.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -328,6 +342,9 @@
 			isa = PBXGroup;
 			children = (
 				58C6683D20449D5500A5CBCF /* Request.swift */,
+				58C668452044A55E00A5CBCF /* Dispatcher.swift */,
+				58C668472044A81A00A5CBCF /* Response.swift */,
+				5810DE7C2045ECEA008F3F5D /* Task.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -336,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				58C6684120449F9C00A5CBCF /* LoginRequest.swift */,
+				58C668432044A43F00A5CBCF /* SignupRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -827,7 +845,9 @@
 			files = (
 				58D815762040063000E9F58E /* Exceptions.swift in Sources */,
 				589DB8D1203F401C005CB8CC /* UserComponent.swift in Sources */,
+				58C668442044A43F00A5CBCF /* SignupRequest.swift in Sources */,
 				58D815782040180000E9F58E /* UIViewController.swift in Sources */,
+				5810DE7D2045ECEA008F3F5D /* Task.swift in Sources */,
 				58D8157E2040B37800E9F58E /* SimpleNetworkUtility.swift in Sources */,
 				589DB8CD203F154E005CB8CC /* UIView.swift in Sources */,
 				58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */,
@@ -838,12 +858,16 @@
 				5813AD79203D4C8800149551 /* Networking.swift in Sources */,
 				58D8157C2040B1C600E9F58E /* NetworkLayer.swift in Sources */,
 				5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */,
+				58C668462044A55E00A5CBCF /* Dispatcher.swift in Sources */,
 				582530EE2036FBFB003AB8A4 /* ViewController.swift in Sources */,
 				58D05AAD203B5A88005B0298 /* AppCoordinator.swift in Sources */,
 				58D05ABB203B619E005B0298 /* UIColor.swift in Sources */,
+				5810DE7B2045DB42008F3F5D /* RegularDispatcher.swift in Sources */,
 				58C6683E20449D5500A5CBCF /* Request.swift in Sources */,
 				582F13402041F269000395E8 /* ProfileViewModel.swift in Sources */,
+				58C668482044A81A00A5CBCF /* Response.swift in Sources */,
 				582F13422041F2CA000395E8 /* ProfileCoordinator.swift in Sources */,
+				5810DE7F2045ED73008F3F5D /* LoginTask.swift in Sources */,
 				58C6684220449F9C00A5CBCF /* LoginRequest.swift in Sources */,
 				589DB8C9203ECC75005CB8CC /* SignupViewController.swift in Sources */,
 				58D05AB8203B603A005B0298 /* LoginViewModel.swift in Sources */,

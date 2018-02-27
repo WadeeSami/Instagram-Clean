@@ -38,14 +38,22 @@ class LoginViewModel{
     
     func signin()throws  {
         try validateLoginParams(email: self.email!, password: self.password!)
-        let loginEndpoint = InstagramAPI.login
-        let response = loginEndpoint.testingData
-        let res = try? JSONSerialization.jsonObject(with: response, options: []) as! [String:Any]
-        if res!["status_code"] as! Int != 200{
-            print ("Logged In User")
-        }else{
-            self.loginCoordinatorDelegate?.userDidLogin()
+        
+        let loginTask = LoginTask(with: LoginRequest.login(username: "test@test.com", password: "123123"))
+        do{
+            try loginTask.execute()
+        }catch let e{
+            print ("What the heck is this\(e.localizedDescription)")
         }
+        
+//        let loginEndpoint = InstagramAPI.login
+//        let response = loginEndpoint.testingData
+//        let res = try? JSONSerialization.jsonObject(with: response, options: []) as! [String:Any]
+//        if res!["status_code"] as! Int != 200{
+//            print ("Logged In User")
+//        }else{
+//            self.loginCoordinatorDelegate?.userDidLogin()
+//        }
     }
     
     

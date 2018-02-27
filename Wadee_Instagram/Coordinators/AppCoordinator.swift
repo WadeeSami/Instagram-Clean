@@ -16,7 +16,7 @@ class AppCoordinator :Coordinator{
     
     fileprivate let rootViewController: UINavigationController!
     
-    fileprivate  var isLoggedIn = true
+    fileprivate  var isLoggedIn = false
     
     // MARK : Initializers
     init(with rootViewControler:UINavigationController) {
