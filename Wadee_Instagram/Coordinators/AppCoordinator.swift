@@ -67,7 +67,7 @@ extension AppCoordinator: AuthCoordinatorDelegate{
     
     func userDidAuthenticate() {
         //remove auth coordinator
-        
+//        self.childCoordinators.removeAll()
         //start profile coordinator
         self.startProfileFlow()
     }

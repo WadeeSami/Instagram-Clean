@@ -14,12 +14,21 @@ public enum NetworkErrors: Error {
 }
 
 class RegularDispatcher:Dispatcher{
-    func performRequest(request: InstagramRequest) throws {
+    
+    
+    
+    func performRequest(request: InstagramRequest, request_completion_handler: @escaping completion_handler) throws {
+        
         let urlRequest = try self.prepareRequest(request: request)
         URLSession.shared.dataTask(with: urlRequest!, completionHandler: {(data, response, error) in
-            print (data)
-            print(error)
-            print(response)
+            if let error = error{
+                print ("shitty errir")
+                let res = Response(with: response as! HTTPURLResponse,  andData: nil, forRequest: request, withError:error)
+                request_completion_handler(res)
+            } else{
+                let res = Response(with: response as! HTTPURLResponse,  andData: data, forRequest: request, withError:nil)
+                request_completion_handler(res)
+            }
         }).resume()
     }
     
@@ -48,11 +57,13 @@ extension RegularDispatcher{
             }
         case HTTPMethod.POST,HTTPMethod.PUT:
             if let params = request.parameters as? [String: String] { // just to simplify
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: .init(rawValue: 0))
+                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
             } else {
                 return nil
             }
         }
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         return urlRequest
     }
 }

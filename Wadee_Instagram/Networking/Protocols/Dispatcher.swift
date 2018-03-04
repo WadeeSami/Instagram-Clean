@@ -7,6 +7,7 @@
 //
 
 import Foundation
+typealias completion_handler = (InstagramResponse) -> ()
 protocol Dispatcher{
-    func performRequest(request:InstagramRequest) throws
+    func performRequest(request:InstagramRequest, request_completion_handler:@escaping completion_handler) throws
 }

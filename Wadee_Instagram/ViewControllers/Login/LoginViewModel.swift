@@ -39,12 +39,19 @@ class LoginViewModel{
     func signin()throws  {
         try validateLoginParams(email: self.email!, password: self.password!)
         
-        let loginTask = LoginTask(with: LoginRequest.login(username: "test@test.com", password: "123123"))
-        do{
-            try loginTask.execute()
-        }catch let e{
-            print ("What the heck is this\(e.localizedDescription)")
+        let loginTask = LoginTask(with: LoginRequest.login(username: self.email!, password: self.password!))
+        
+        try loginTask.execute(){ response in
+            if response.statusCode == 200 {
+                DispatchQueue.main.async {
+                    self.loginCoordinatorDelegate?.userDidLogin()
+                }
+            }else{
+                print ("something bad happened")
+            }
         }
+//            print(response.statusCode)
+        
         
 //        let loginEndpoint = InstagramAPI.login
 //        let response = loginEndpoint.testingData

@@ -29,7 +29,7 @@ extension LoginRequest:InstagramRequest{
     var parameters: [String:Any] {
         switch self {
         case .login(username: let userName, password: let password):
-            return ["user_name": userName, "password": password]
+            return ["email": userName, "password": password]
         
         }
     }

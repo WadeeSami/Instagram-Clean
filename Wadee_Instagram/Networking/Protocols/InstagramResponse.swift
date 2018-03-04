@@ -17,6 +17,6 @@ protocol InstagramResponse {
     
     var data: Data? {get}
     
-    func convertToJson()
+    var error:Error? {get}
     
 }

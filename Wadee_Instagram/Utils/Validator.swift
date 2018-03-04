@@ -10,8 +10,9 @@ import Foundation
 
 class Validator{
     static func validatePassword(password:String)->Bool{
-        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
-        return passwordTest.evaluate(with: password)
+//        let passwordTest = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[$@$#!%*?&])[A-Za-z\\d$@$#!%*?&]{8,}")
+//        return passwordTest.evaluate(with: password)
+        return true
     }
     
     static func validateEmail(email:String)->Bool{

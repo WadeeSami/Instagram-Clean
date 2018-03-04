@@ -17,7 +17,7 @@ struct SimpleNetworkUtility : NetworkLayer{
     let API_TOKEN = "fgbfkbkgbmkgbm"
     #endif
     
-    static var baseUrl: URL = URL(string: "http//localhost:8080/")!
+    static var baseUrl: URL = URL(string: "http://localhost:7000/api/v1")!
     static func performGetRequest(fromUrl url: URL, successHandler: @escaping successHandler, failureHandler: @escaping failureHandler) {
         URLSession.shared.dataTask(with: url){ (data, response, error) in
             if let error = error {

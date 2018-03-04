@@ -17,6 +17,6 @@ protocol Task {
     ///
     /// - Parameter dispatcher: dispatcher
     /// - Returns: a promise
-    func execute() throws
+    func execute(handler: @escaping (InstagramResponse)->()) throws
     
 }
