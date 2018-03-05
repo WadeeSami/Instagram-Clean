@@ -9,6 +9,8 @@
 import Foundation
 
 class UserComponent{
+    static let USER_LOGIN_STATUS_KEY = "user_login_status_key"
+    
     static func signUp(withUsername username:String,email:String, andPassword password:String ,completionHandler handler:(_ userInfo:String?, Error?)->()){
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/registration")
         SimpleNetworkUtility.performGetRequest(fromUrl: url, successHandler: { data in }, failureHandler: {error in })
@@ -20,5 +22,13 @@ class UserComponent{
         }else{
             handler(nil, nil)
         }
+    }
+    
+    static func setUserLoginStatus(loggedIn:Bool){
+        UserDefaults.standard.set(loggedIn, forKey: USER_LOGIN_STATUS_KEY)
+    }
+    
+    static func isUserLoggedIn()->Bool{
+        return UserDefaults.standard.bool(forKey: USER_LOGIN_STATUS_KEY) 
     }
 }

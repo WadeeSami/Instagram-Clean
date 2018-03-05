@@ -43,6 +43,7 @@ class LoginViewModel{
         
         try loginTask.execute(){ response in
             if response.statusCode == 200 {
+                UserComponent.setUserLoginStatus(loggedIn: true)
                 DispatchQueue.main.async {
                     self.loginCoordinatorDelegate?.userDidLogin()
                 }

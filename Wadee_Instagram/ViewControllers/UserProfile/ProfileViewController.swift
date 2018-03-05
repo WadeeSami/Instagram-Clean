@@ -52,7 +52,9 @@ class ProfileViewController:UICollectionViewController{
     }
     
      func logout(){
-        print ("logout")
+        if let coord = self.coordinator as? ProfileCoordinator {
+            coord.logout()
+        }
     }
 }
 extension ProfileViewController: UICollectionViewDelegateFlowLayout{
@@ -74,7 +76,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileViewController.profileImagesCellID, for: indexPath)
-        print ("What the hell is going on !!!")
         cell.backgroundColor = UIColor.red
         
         return cell

@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol ProfileCoordinatorDelegate:class{
+    func userDidTapLogout()
+}
 class ProfileCoordinator:NSObject, Coordinator{
+    weak var profileCoordinatorDelegate:ProfileCoordinatorDelegate?
+    
     private var rootViewController:UINavigationController!
     
      init(with navController: UINavigationController) {
@@ -35,5 +40,9 @@ class ProfileCoordinator:NSObject, Coordinator{
         //
     }
     
+    func logout(){
+        //go to sign up
+        profileCoordinatorDelegate?.userDidTapLogout()
+    }
     
 }
