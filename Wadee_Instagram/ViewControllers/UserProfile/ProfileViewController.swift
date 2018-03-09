@@ -11,8 +11,8 @@ import UIKit
 class ProfileViewController:UICollectionViewController{
     static let profileImagesCellID = "ProfilePicturesCellId"
     //MARK: properties
-    var viewModel:ProfileViewModel?
-    var coordinator: Coordinator?
+    var profileViewModel:ProfileViewModel?
+    var profileCoordinator: Coordinator?
     
     //MARK: life cycle methods
     override func viewDidLoad() {

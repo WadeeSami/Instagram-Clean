@@ -12,20 +12,20 @@ protocol ProfileCoordinatorDelegate:class{
     func userDidTapLogout()
 }
 class ProfileCoordinator:NSObject, Coordinator{
-    weak var profileCoordinatorDelegate:ProfileCoordinatorDelegate?
+    weak public var profileCoordinatorDelegate:ProfileCoordinatorDelegate?
     
-    private var rootViewController:UINavigationController!
+    private var rootViewController:InstagtamMainBarController!
     
-     init(with navController: UINavigationController) {
+     init(with tabBarController: InstagtamMainBarController) {
         super.init()
-        self.rootViewController = navController
+        self.rootViewController = tabBarController
     }
     
     func start() {
         let profileViewModel = ProfileViewModel()
         let profileViewController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        profileViewController.viewModel = profileViewModel
-        profileViewController.coordinator = self
+        profileViewController.profileViewModel = profileViewModel
+        profileViewController.profileCoordinator = self
         self.rootViewController.show(profileViewController, sender: self)
         
     }

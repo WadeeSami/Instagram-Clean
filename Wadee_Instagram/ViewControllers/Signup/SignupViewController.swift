@@ -10,8 +10,8 @@ import UIKit
 
 class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     //MARK: private vars
-    private var viewModel:SignupViewModel?
-    private var coordinator:AuthCoordinator?
+    private var signupViewModel:SignupViewModel?
+    private var authCoordinator:AuthCoordinator?
     //MARK: LifCycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,8 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
     //MARK: initialozers
     init(withViewModel viewModel:SignupViewModel,andCoordinator coordinator:AuthCoordinator) {
         super.init(nibName: nil, bundle: nil)
-        self.viewModel = viewModel
-        self.coordinator = coordinator
+        self.signupViewModel = viewModel
+        self.authCoordinator = coordinator
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -142,7 +142,7 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
         }
         
         do{
-            try self.viewModel?.signup()
+            try self.signupViewModel?.signup()
         }catch let error{
             if let validError = error as? InstagramErrorType{
                 self.displayValidationErrorAlert(forError: validError)
@@ -153,23 +153,23 @@ class SignupViewController:UIViewController, UIImagePickerControllerDelegate, UI
     }
     
     @objc func handlePasswordChange(){
-        self.viewModel?.password = self.passwordTextField.text
+        self.signupViewModel?.password = self.passwordTextField.text
     }
     
     @objc func handleEmailChange(){
-            self.viewModel?.email = self.emailTextField.text
+            self.signupViewModel?.email = self.emailTextField.text
     }
     
     @objc func handleUsernameChange(){
-        self.viewModel?.username = self.usernameTextField.text
+        self.signupViewModel?.username = self.usernameTextField.text
     }
     
     @objc func addProfileButton(){
-        self.coordinator?.showImagePicker()
+        self.authCoordinator?.showImagePicker()
     }
     
     @objc func handleSignin(){
-        self.viewModel?.goToLogin()
+        self.signupViewModel?.goToLogin()
     }
     
     private func allFieldsNotEmpty()->Bool{

@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 
 class LoginViewController:UIViewController{
-    // MARK: ViewModel
-    fileprivate var viewModel :LoginViewModel?
+    // MARK: loginViewModel
+    fileprivate var loginViewModel :LoginViewModel?
     
     // MARK: initializers
     init(with loginViewModel: LoginViewModel) {
         super.init(nibName: nil, bundle: nil)
-        self.viewModel = loginViewModel
-                self.viewModel?.loginVMDelegate = self
+        self.loginViewModel = loginViewModel
+                self.loginViewModel?.loginVMDelegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -141,11 +141,11 @@ class LoginViewController:UIViewController{
     
     //MARK:- Event Handlers
     @objc func handlePasswordChange(){
-        self.viewModel?.password = passwordTextField.text
+        self.loginViewModel?.password = passwordTextField.text
     }
     
     @objc func handleEmailChange(){
-        self.viewModel?.email = emailTextField.text
+        self.loginViewModel?.email = emailTextField.text
     }
     
     @objc func handleSignin(){
@@ -156,7 +156,7 @@ class LoginViewController:UIViewController{
         }
         
         do{
-            try self.viewModel?.signin()
+            try self.loginViewModel?.signin()
         }catch let e{
             if let valError = e as? FieldValidationError{
                 self.displayValidationErrorAlert(forError: valError)
@@ -166,13 +166,13 @@ class LoginViewController:UIViewController{
     }
     
     @objc func handleSignup(){
-        self.viewModel?.goToSignUp()
+        self.loginViewModel?.goToSignUp()
     }
     
     @objc func didEndEdittingEmail(){
         let emailText = emailTextField.text
         if !emailText!.isEmpty{
-            self.viewModel?.email = emailText
+            self.loginViewModel?.email = emailText
         }
     }
 
