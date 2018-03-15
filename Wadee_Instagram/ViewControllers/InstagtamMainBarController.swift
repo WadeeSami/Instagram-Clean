@@ -9,6 +9,7 @@
 import UIKit
 
 class InstagtamMainBarController:UITabBarController{
+    //TODO: consider moving controller's related logic to the coordinator !!
     
     //MARK: private vars
     fileprivate var tabBarCoordinator: MainBarCoordinator?
@@ -17,7 +18,7 @@ class InstagtamMainBarController:UITabBarController{
     init(with barCoordinator:MainBarCoordinator) {
         super.init(nibName: nil, bundle: nil)
         
-//        self.tabBarCoordinator = barCoordinator
+        self.tabBarCoordinator = barCoordinator
         self.setupViewControllers()
     }
     
@@ -42,12 +43,14 @@ class InstagtamMainBarController:UITabBarController{
         profileViewController.profileViewModel = profileViewModel
         profileViewController.profileCoordinator = profileCoordinator
         
-        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout()), relatedCoordinator: nil, relatedViewModel: nil)
+        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: profileViewController, relatedCoordinator: nil, relatedViewModel: nil)
         
         //search
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), relatedCoordinator: nil, relatedViewModel: nil)
         
-        let plusNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"), relatedCoordinator: nil, relatedViewModel: nil)
+        let photoSelectionViewController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"),
+                                                                 rootViewController: PhotoSelectionViewController(collectionViewLayout: UICollectionViewFlowLayout()),
+                                                                 relatedCoordinator: PhotoSelectionCoordinator(), relatedViewModel: PhotoSelectionViewModel())
         
         let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), relatedCoordinator: nil, relatedViewModel:nil)
         
@@ -63,7 +66,7 @@ class InstagtamMainBarController:UITabBarController{
         
         viewControllers = [homeNavController,
                            searchNavController,
-                           plusNavController,
+                           photoSelectionViewController,
                            likeNavController,
                            userProfileNavController]
         
@@ -80,13 +83,14 @@ class InstagtamMainBarController:UITabBarController{
         let navController = UINavigationController(rootViewController: viewController)
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage
-        if let viewModel = viewModel{
-            navController.viewModel = viewModel
-        }
-        
-        if let coord = coord{
-            navController.coordinator = coord
-        }
+//        if let viewModel = viewModel{
+//            navController.viewModel = viewModel
+//
+//        }
+//
+//        if let coord = coord{
+//            navController.coordinator = coord
+//        }
         
         return navController
     }

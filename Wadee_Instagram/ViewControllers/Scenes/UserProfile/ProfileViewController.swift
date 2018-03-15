@@ -12,7 +12,7 @@ class ProfileViewController:UICollectionViewController{
     static let profileImagesCellID = "ProfilePicturesCellId"
     //MARK: properties
     var profileViewModel:ProfileViewModel?
-    var profileCoordinator: Coordinator?
+    var profileCoordinator: ProfileCoordinator?
     
     //MARK: life cycle methods
     override func viewDidLoad() {
@@ -51,10 +51,10 @@ class ProfileViewController:UICollectionViewController{
         
     }
     
-     func logout(){
-        if let coord = self.coordinator as? ProfileCoordinator {
-            coord.logout()
-        }
+    func logout(){
+        
+        self.profileCoordinator?.logout()
+        
     }
 }
 extension ProfileViewController: UICollectionViewDelegateFlowLayout{

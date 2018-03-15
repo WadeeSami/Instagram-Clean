@@ -11,9 +11,11 @@ import UIKit
 class MainBarCoordinator:NSObject,Coordinator{
     fileprivate lazy var mainTabBarController = InstagtamMainBarController(with: self)
     fileprivate var rootViewController:UINavigationController
+    fileprivate var appCoordinator:AppCoordinator?
     
-    init(with rootViewController:UINavigationController) {
+    init(with rootViewController:UINavigationController, andAppCoordinator appCoordinator:AppCoordinator) {
         self.rootViewController = rootViewController
+        self.appCoordinator = appCoordinator
     }
     func start() {
         //show the profile first
@@ -37,9 +39,9 @@ class MainBarCoordinator:NSObject,Coordinator{
 extension MainBarCoordinator: ProfileCoordinatorDelegate{
     func userDidTapLogout() {
         UserComponent.setUserLoginStatus(loggedIn: false)
-        self.childCoordinators.removeLast()
         //call upper coord to show the signin
-        //        self.startAuthenticationFlow()
+        self.rootViewController.dismiss(animated: true, completion: nil)
+        self.appCoordinator?.userDidTapLogout()
     }
 }
 

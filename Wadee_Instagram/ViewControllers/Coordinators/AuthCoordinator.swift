@@ -55,7 +55,8 @@ class AuthCoordinator :NSObject, Coordinator{
 extension AuthCoordinator: LoginViewModelCoordinatorDelegate{
     func userDidLogin() {
         //go to profile
-        print("Heading Directry to the profile")
+        self.navigationController?.popViewController(animated: true)
+        
         self.authCoordinatorDelegate?.userDidAuthenticate()
     }
     

@@ -15,4 +15,34 @@ extension UIViewController{
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    
 }
+
+
+//extension UIViewController{
+//    var viewModel : InstagramBaseViewModel{
+//        set{
+//            DispatchQueue.main.async {
+//                self.viewModel = newValue
+//            }
+//
+//        }
+//        get{
+//            return self.viewModel
+//        }
+//    }
+//
+//    var coordinator : Coordinator{
+//        set{
+//            DispatchQueue.main.async {
+//                self.coordinator = newValue
+//            }
+//
+//        }
+//        get{
+//            print("Getting Coord")
+//            return self.coordinator
+//        }
+//    }
+//}
+

@@ -13,7 +13,13 @@ class UserComponent{
     
     static func signUp(withUsername username:String,email:String, andPassword password:String ,completionHandler handler:(_ userInfo:String?, Error?)->()){
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/registration")
-        SimpleNetworkUtility.performGetRequest(fromUrl: url, successHandler: { data in }, failureHandler: {error in })
+        //        SimpleNetworkUtility.performGetRequest(fromUrl: url, successHandler: { data in }, failureHandler: {error in })
+        SimpleNetworkUtility.performPostRequest(fromUrl: url, parameters: ["username":username, "email":email, "password":password], successHandler: {data in
+            let res = try? JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+            
+        }, failureHandler: {error in
+            print(error)
+        })
         let loginEndpoint = InstagramAPI.signup
         let response = loginEndpoint.testingData
         let res = try? JSONSerialization.jsonObject(with: response, options: []) as! [String:Any]

@@ -16,7 +16,7 @@ class AppCoordinator :Coordinator{
     
     fileprivate let rootViewController: UINavigationController!
     
-    fileprivate  var isLoggedIn = false //UserComponent.isUserLoggedIn()
+    fileprivate  var isLoggedIn = false//UserComponent.isUserLoggedIn()
     
     // MARK : Initializers
     init(with rootViewControler:UINavigationController) {
@@ -56,14 +56,14 @@ extension AppCoordinator{
     }
     
     func startProfileFlow(){
-        let mainBarCoordinator = MainBarCoordinator(with: self.rootViewController)
+        let mainBarCoordinator = MainBarCoordinator(with: self.rootViewController,andAppCoordinator: self)
         self.addChildCoordinator(coordinator: mainBarCoordinator)
         mainBarCoordinator.start()
         
-//        let profileCoordinator = ProfileCoordinator(with: self.mainTabBarController)
-//        self.addChildCoordinator(coordinator: profileCoordinator)
-//        profileCoordinator.profileCoordinatorDelegate = self
-//        profileCoordinator.start()
+        //        let profileCoordinator = ProfileCoordinator(with: self.mainTabBarController)
+        //        self.addChildCoordinator(coordinator: profileCoordinator)
+        //        profileCoordinator.profileCoordinatorDelegate = self
+        //        profileCoordinator.start()
     }
     
 }
@@ -73,6 +73,7 @@ extension AppCoordinator: AuthCoordinatorDelegate{
     func userDidAuthenticate() {
         //remove auth coordinator
         self.childCoordinators.removeLast()
+        self.rootViewController.popViewController(animated: true)
         self.startProfileFlow()
     }
     
@@ -83,7 +84,7 @@ extension AppCoordinator: ProfileCoordinatorDelegate{
     func userDidTapLogout() {
         UserComponent.setUserLoginStatus(loggedIn: false)
         self.childCoordinators.removeLast()
-        self.startAuthenticationFlow()
+//        self.startAuthenticationFlow()
     }
 }
 

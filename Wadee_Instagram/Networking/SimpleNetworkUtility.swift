@@ -29,4 +29,26 @@ struct SimpleNetworkUtility : NetworkLayer{
             }.resume()
     }
     
+    static func performPostRequest(fromUrl url:URL, parameters params :[String:Any], successHandler: @escaping successHandler, failureHandler: @escaping failureHandler){
+        do{
+            let data = try JSONSerialization.data(withJSONObject: params, options: [])
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.httpBody = data
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            let task = URLSession.shared.dataTask(with: request){  (data, response, error) in
+                if let error = error {
+                    failureHandler(error)
+                }else{
+                    successHandler(data)
+                }
+                
+            }
+            task.resume()
+        }catch let e{
+            print (e)
+        }
+    }
+    
 }
