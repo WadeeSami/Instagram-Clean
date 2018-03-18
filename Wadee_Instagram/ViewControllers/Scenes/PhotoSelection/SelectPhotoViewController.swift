@@ -10,8 +10,17 @@ import UIKit
 import Photos
 class PhotoSelectionViewController:UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    //MARK: - variables
+    
     let cellId = "cellId"
     let headerId = "headerId"
+    
+    private var selectedImage:UIImage?
+    
+    //stores 'low quality' fetched images to be presented in the grid
+    private var images = [UIImage]()
+    private var assets = [PHAsset]()
+    //MARK: life cycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,12 +30,36 @@ class PhotoSelectionViewController:UICollectionViewController, UICollectionViewD
         
         collectionView?.register(PhotoSelectionCell.self, forCellWithReuseIdentifier: cellId)
         
-        collectionView?.register(UICollectionViewCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(PhotoSelectionHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
         self.fetchPhotos()
     }
     
-    var images = [UIImage]()
+    
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    //MARK: controller specific methods
+    fileprivate func setupNavigationButtons() {
+        navigationController?.navigationBar.tintColor = .black
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
+    }
+    
+    //MARK: handlers
+    @objc func handleNext() {
+        print("Handling next")
+    }
+    
+    @objc func handleCancel() {
+        //delegate to the coodinator
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension PhotoSelectionViewController{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0)
@@ -38,9 +71,16 @@ class PhotoSelectionViewController:UICollectionViewController, UICollectionViewD
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! PhotoSelectionHeaderCell
         
-        header.backgroundColor = .red
+        
+        if selectedImage != nil, let index = self.images.index(of: self.selectedImage!){
+            let imageManager = PHImageManager.default()
+            imageManager.requestImage(for: self.assets[index], targetSize: CGSize(width: 700, height: 700), contentMode: .aspectFill, options: nil, resultHandler: { (image, info) in
+                header.cellImageView.image = image
+            })
+        }
+        
         
         return header
     }
@@ -69,47 +109,49 @@ class PhotoSelectionViewController:UICollectionViewController, UICollectionViewD
         return cell
     }
     
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
-    fileprivate func setupNavigationButtons() {
-        navigationController?.navigationBar.tintColor = .black
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
-    }
-    
-    @objc func handleNext() {
-        print("Handling next")
-    }
-    
-    @objc func handleCancel() {
-        dismiss(animated: true, completion: nil)
+        self.selectedImage = self.images[indexPath.item]
+        self.collectionView?.reloadData()
     }
 }
 
 extension PhotoSelectionViewController{
     
-    func fetchPhotos(){
-        print("fetch Photos")
+    func getUserGalleryFetchOptions()->PHFetchOptions{
         let fetchOptions = PHFetchOptions()
         //consider adding a sort descriptor to sort according to date !
-        fetchOptions.fetchLimit = 10
-        let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-        allPhotos.enumerateObjects { (asset, count, stop) in
-            let imageManager = PHImageManager()
-            let imageSize = CGSize(width: 350, height: 350)
-            let options = PHImageRequestOptions()
-            options.isSynchronous = true
-            imageManager.requestImage(for: asset, targetSize: imageSize, contentMode: .aspectFit, options: options, resultHandler: { (image, ingo) in
-                self.images.append(image!)
-                if  count == self.images.count - 1 {
-                    self.collectionView?.reloadData()
-                }
-            })
-           
+        fetchOptions.fetchLimit = 30
+        return fetchOptions
+    }
+    
+    func fetchPhotos(){
+        DispatchQueue.global(qos: .background).async {
+            let allPhotos = PHAsset.fetchAssets(with: .image, options: self.getUserGalleryFetchOptions())
+            allPhotos.enumerateObjects { (asset, count, stop) in
+                let imageManager = PHImageManager()
+                let imageSize = CGSize(width: 200, height: 200)
+                let options = PHImageRequestOptions()
+                options.isSynchronous = true
+                imageManager.requestImage(for: asset, targetSize: imageSize, contentMode: .aspectFit, options: options, resultHandler: { (image, ingo) in
+                    self.images.append(image!)
+                    self.assets.append(asset)
+                    
+                    if self.selectedImage == nil{
+                        self.selectedImage = image!
+                    }
+                    
+                    if  count == self.images.count - 1 {
+                        DispatchQueue.main.async {
+                            self.collectionView?.reloadData()
+                        }
+                        
+                    }
+                })
+                
+            }
         }
+        
     }
 }
 

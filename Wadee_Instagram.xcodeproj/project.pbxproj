@@ -64,6 +64,7 @@
 		589DB8CD203F154E005CB8CC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8CC203F154E005CB8CC /* UIView.swift */; };
 		589DB8D1203F401C005CB8CC /* UserComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8D0203F401C005CB8CC /* UserComponent.swift */; };
 		589DB8D3203F4CFB005CB8CC /* signup.json in Resources */ = {isa = PBXBuildFile; fileRef = 589DB8D2203F4CFB005CB8CC /* signup.json */; };
+		58BAE787205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BAE786205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift */; };
 		58C6683E20449D5500A5CBCF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C6683D20449D5500A5CBCF /* Request.swift */; };
 		58C6684220449F9C00A5CBCF /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C6684120449F9C00A5CBCF /* LoginRequest.swift */; };
 		58C668442044A43F00A5CBCF /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C668432044A43F00A5CBCF /* SignupRequest.swift */; };
@@ -147,6 +148,7 @@
 		589DB8CC203F154E005CB8CC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		589DB8D0203F401C005CB8CC /* UserComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserComponent.swift; sourceTree = "<group>"; };
 		589DB8D2203F4CFB005CB8CC /* signup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = signup.json; sourceTree = "<group>"; };
+		58BAE786205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionHeaderCell.swift; sourceTree = "<group>"; };
 		58C6683D20449D5500A5CBCF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		58C6684120449F9C00A5CBCF /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		58C668432044A43F00A5CBCF /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
@@ -354,6 +356,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		58BAE788205EDFF00015F02F /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				58CE1E9C205AD71C00BC8437 /* PhotoSelectionCell.swift */,
+				58BAE786205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		58C6683F20449F6C00A5CBCF /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,10 +505,10 @@
 		58E540732052EE3D00F461E3 /* PhotoSelection */ = {
 			isa = PBXGroup;
 			children = (
+				58BAE788205EDFF00015F02F /* cells */,
 				58E540742052EE6300F461E3 /* SelectPhotoViewController.swift */,
 				58E540762052EE9200F461E3 /* PhotoSelectionCoordinator.swift */,
 				58E540782052EEDE00F461E3 /* PhotoSelectionViewModel.swift */,
-				58CE1E9C205AD71C00BC8437 /* PhotoSelectionCell.swift */,
 			);
 			path = PhotoSelection;
 			sourceTree = "<group>";
@@ -935,6 +946,7 @@
 				58D05AB2203B5F35005B0298 /* AuthCoordinator.swift in Sources */,
 				582530EC2036FBFB003AB8A4 /* AppDelegate.swift in Sources */,
 				58E5406A2052823700F461E3 /* MainBarCoordinator.swift in Sources */,
+				58BAE787205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift in Sources */,
 				58677283203771410037CEF3 /* RootViewController.swift in Sources */,
 				58D8157A204086CE00E9F58E /* User.swift in Sources */,
 				58E540772052EE9200F461E3 /* PhotoSelectionCoordinator.swift in Sources */,
