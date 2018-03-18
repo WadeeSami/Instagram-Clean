@@ -65,6 +65,7 @@
 		589DB8D1203F401C005CB8CC /* UserComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8D0203F401C005CB8CC /* UserComponent.swift */; };
 		589DB8D3203F4CFB005CB8CC /* signup.json in Resources */ = {isa = PBXBuildFile; fileRef = 589DB8D2203F4CFB005CB8CC /* signup.json */; };
 		58BAE787205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BAE786205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift */; };
+		58BAE78A205EF83B0015F02F /* PhotoSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BAE789205EF83B0015F02F /* PhotoSharingViewController.swift */; };
 		58C6683E20449D5500A5CBCF /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C6683D20449D5500A5CBCF /* Request.swift */; };
 		58C6684220449F9C00A5CBCF /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C6684120449F9C00A5CBCF /* LoginRequest.swift */; };
 		58C668442044A43F00A5CBCF /* SignupRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C668432044A43F00A5CBCF /* SignupRequest.swift */; };
@@ -149,6 +150,7 @@
 		589DB8D0203F401C005CB8CC /* UserComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserComponent.swift; sourceTree = "<group>"; };
 		589DB8D2203F4CFB005CB8CC /* signup.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = signup.json; sourceTree = "<group>"; };
 		58BAE786205EDFEB0015F02F /* PhotoSelectionHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectionHeaderCell.swift; sourceTree = "<group>"; };
+		58BAE789205EF83B0015F02F /* PhotoSharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSharingViewController.swift; sourceTree = "<group>"; };
 		58C6683D20449D5500A5CBCF /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		58C6684120449F9C00A5CBCF /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		58C668432044A43F00A5CBCF /* SignupRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupRequest.swift; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				58E540742052EE6300F461E3 /* SelectPhotoViewController.swift */,
 				58E540762052EE9200F461E3 /* PhotoSelectionCoordinator.swift */,
 				58E540782052EEDE00F461E3 /* PhotoSelectionViewModel.swift */,
+				58BAE789205EF83B0015F02F /* PhotoSharingViewController.swift */,
 			);
 			path = PhotoSelection;
 			sourceTree = "<group>";
@@ -931,6 +934,7 @@
 				58D05AAD203B5A88005B0298 /* AppCoordinator.swift in Sources */,
 				58D05ABB203B619E005B0298 /* UIColor.swift in Sources */,
 				5810DE7B2045DB42008F3F5D /* RegularDispatcher.swift in Sources */,
+				58BAE78A205EF83B0015F02F /* PhotoSharingViewController.swift in Sources */,
 				58E540792052EEDE00F461E3 /* PhotoSelectionViewModel.swift in Sources */,
 				583286292048795500DDACEB /* InstagramExceptions.swift in Sources */,
 				58C6683E20449D5500A5CBCF /* Request.swift in Sources */,

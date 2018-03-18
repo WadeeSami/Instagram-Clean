@@ -50,7 +50,9 @@ class PhotoSelectionViewController:UICollectionViewController, UICollectionViewD
     
     //MARK: handlers
     @objc func handleNext() {
-        print("Handling next")
+        let photoSharingViewController = PhotoSharingViewController(nibName: nil, bundle: nil)
+        photoSharingViewController.sharedImage = self.selectedImage!
+        self.navigationController?.show(photoSharingViewController, sender: self)
     }
     
     @objc func handleCancel() {
