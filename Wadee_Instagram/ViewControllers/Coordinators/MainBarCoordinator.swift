@@ -20,7 +20,9 @@ class MainBarCoordinator:NSObject,Coordinator{
     func start() {
         //show the profile first
         self.mainTabBarController.delegate = self
-        self.rootViewController.present(self.mainTabBarController, animated: true, completion: nil)
+//        self.rootViewController.present(self.mainTabBarController, animated: true, completion: nil)
+        self.rootViewController.navigationBar.isHidden = true
+        self.rootViewController.pushViewController(self.mainTabBarController, animated: true)
     }
     
     var childCoordinators: [Coordinator] = []
