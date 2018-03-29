@@ -10,6 +10,9 @@ import UIKit
 import SnapKit
 
 class PhotoSharingViewController:UIViewController{
+    //MARK: coordinator
+    var coordinator:PhotoSelectionCoordinator?
+    
     //MARK: life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,7 @@ class PhotoSharingViewController:UIViewController{
     private func setupNavigationBar(){
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(shareImage))
     }
+    
     private func setupViews(){
         self.setupNavigationBar()
         
@@ -78,6 +82,21 @@ class PhotoSharingViewController:UIViewController{
     
     //MARK: handlers
     @objc private func shareImage(){
+        //call view model
+        guard  !self.textView.text.isEmpty ,let content = self.textView.text else {
+            //seek better UX :3
+            self.textView.shakeView()
+            return
+        }
+        DispatchQueue.global(qos: .userInteractive).async {
+            UserPostsComponent.addUserPost(with: [self.sharedImage!], andContent: content, successHandler: {
+                print("dismissing")
+                self.coordinator?.didFinishPostingImage(fromPhotoSharingViewController: self)
+                
+            }, failureHandler: {
+                print("Shiiiiit")
+            })
+        }
         
     }
     

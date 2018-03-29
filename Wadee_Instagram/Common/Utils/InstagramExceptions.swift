@@ -69,6 +69,7 @@ struct ValidationErrorException:InstagramException {
 
 
 
+
 let ExceptipnsMap: [Int:Any] = [
     601: InvalidCredintialsException.self,
     600: ValidationErrorException.self

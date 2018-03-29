@@ -8,10 +8,11 @@
 
 import UIKit
 import Photos
+
 class PhotoSelectionViewController:UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     //MARK: - variables
-    
+    var coordinator:PhotoSelectionCoordinator?
     let cellId = "cellId"
     let headerId = "headerId"
     
@@ -43,6 +44,7 @@ class PhotoSelectionViewController:UICollectionViewController, UICollectionViewD
     //MARK: controller specific methods
     fileprivate func setupNavigationButtons() {
         navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.backgroundColor = UIColor.white
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
@@ -50,9 +52,9 @@ class PhotoSelectionViewController:UICollectionViewController, UICollectionViewD
     
     //MARK: handlers
     @objc func handleNext() {
-        let photoSharingViewController = PhotoSharingViewController(nibName: nil, bundle: nil)
-        photoSharingViewController.sharedImage = self.selectedImage!
-        self.navigationController?.show(photoSharingViewController, sender: self)
+        coordinator?.openPhotoShareViewController(withImage: self.selectedImage!)
+        
+        
     }
     
     @objc func handleCancel() {

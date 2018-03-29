@@ -29,6 +29,7 @@ class InstagtamMainBarController:UITabBarController{
     //MARK: lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupViewControllers()
     }
     
@@ -48,10 +49,17 @@ class InstagtamMainBarController:UITabBarController{
         //search
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), relatedCoordinator: nil, relatedViewModel: nil)
         
-        let photoSelectionViewController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"),
-                                                                 rootViewController: PhotoSelectionViewController(collectionViewLayout: UICollectionViewFlowLayout()),
-                                                                 relatedCoordinator: PhotoSelectionCoordinator(), relatedViewModel: PhotoSelectionViewModel())
+        //Photos
+        let photoSelectionVC = PhotoSelectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let photoSelectionNavigationController = UINavigationController(rootViewController: photoSelectionVC)
+        let photoSelectionCoordinator = PhotoSelectionCoordinator(photoSelectionCoordDelegate: self, rootViewController: photoSelectionNavigationController, childCoordinators: [])
+        photoSelectionVC.coordinator = photoSelectionCoordinator
         
+        photoSelectionNavigationController.tabBarItem.image = #imageLiteral(resourceName: "plus_unselected")
+        photoSelectionNavigationController.tabBarItem.selectedImage = #imageLiteral(resourceName: "plus_unselected")
+
+        
+        //like
         let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), relatedCoordinator: nil, relatedViewModel:nil)
         
         //user profile
@@ -66,7 +74,7 @@ class InstagtamMainBarController:UITabBarController{
         
         viewControllers = [homeNavController,
                            searchNavController,
-                           photoSelectionViewController,
+                           photoSelectionNavigationController,
                            likeNavController,
                            userProfileNavController]
         
@@ -83,18 +91,19 @@ class InstagtamMainBarController:UITabBarController{
         let navController = UINavigationController(rootViewController: viewController)
         navController.tabBarItem.image = unselectedImage
         navController.tabBarItem.selectedImage = selectedImage
-//        if let viewModel = viewModel{
-//            navController.viewModel = viewModel
-//
-//        }
-//
-//        if let coord = coord{
-//            navController.coordinator = coord
-//        }
-        
         return navController
     }
 
+    
+}
+
+
+extension InstagtamMainBarController:PhotoSelectionCoordinatorDelegate{
+    func didFinishPostingImage() {
+        print ("Wil  switch finally")
+        self.selectedIndex = 0
+    }
+    
     
 }
 

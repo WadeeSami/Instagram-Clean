@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Alamofire
 
 struct SimpleNetworkUtility : NetworkLayer{
     #if DEVELOPMENT
@@ -17,7 +18,7 @@ struct SimpleNetworkUtility : NetworkLayer{
     let API_TOKEN = "fgbfkbkgbmkgbm"
     #endif
     
-    static var baseUrl: URL = URL(string: "http://localhost:7000/api/v1")!
+    static var baseUrl: URL = URL(string: "http://localhost:9000/api/v1")!
     static func performGetRequest(fromUrl url: URL, successHandler: @escaping successHandler, failureHandler: @escaping failureHandler) {
         URLSession.shared.dataTask(with: url){ (data, response, error) in
             if let error = error {
@@ -50,5 +51,47 @@ struct SimpleNetworkUtility : NetworkLayer{
             print (e)
         }
     }
+    
+    
+    static func performMultipartRequest(fromUrl url:URL, parameters params: [String:Any], images : [Data] = [],successHandler: @escaping successHandler, failureHandler: @escaping failureHandler){
+   
+            Alamofire.upload(
+                multipartFormData: { multipartFormData in
+                    multipartFormData.append("test content".data(using: .utf8)!, withName: "content")
+                    multipartFormData.append(images[0],
+                                             withName: "images[]",
+                                             fileName: "image.jpg",
+                                             mimeType: "image/jpeg")
+            },
+                to: url,
+                headers: [:],
+                encodingCompletion: { encodingResult in
+                    switch encodingResult {
+                    case .success(let upload, _, _):
+                        upload.validate()
+                        upload.responseJSON { response in
+                            // 1.
+                            guard response.result.isSuccess else {
+                                failureHandler(nil)
+                                return
+                            }
+                            
+                            // 2.
+                            guard let responseJSON = response.result.value as? [String: Any], let status_code = responseJSON["status_code"]  else{
+                                return failureHandler(nil)
+                            }
+                            
+                            successHandler(nil)
+                    
+                        }
+                    case .failure(let encodingError):
+                        failureHandler(encodingError)
+                    }
+                    
+            }
+            )
+        
+    }
+    
     
 }
