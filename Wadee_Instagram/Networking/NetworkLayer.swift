@@ -7,8 +7,12 @@
 //
 
 import Foundation
+import Alamofire
+
 typealias successHandler = (_ response:Data?)->()
 typealias failureHandler  = (_ error:Error?)-> ()
+
+typealias alamoSuccessHandler = (_ responseResult:DataResponse<Any>?)->()
 
 protocol NetworkLayer{
     static var baseUrl:URL {get}

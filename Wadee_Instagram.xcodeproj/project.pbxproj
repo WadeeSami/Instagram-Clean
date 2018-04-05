@@ -16,6 +16,7 @@
 		5813AD74203D460500149551 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 5813AD73203D460500149551 /* login.json */; };
 		5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5813AD76203D478E00149551 /* InstagramAPI.swift */; };
 		5813AD79203D4C8800149551 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5813AD78203D4C8800149551 /* Networking.swift */; };
+		581445112075EABA00561F7A /* AuthComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581445102075EABA00561F7A /* AuthComponent.swift */; };
 		582530EC2036FBFB003AB8A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582530EB2036FBFB003AB8A4 /* AppDelegate.swift */; };
 		582530EE2036FBFB003AB8A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582530ED2036FBFB003AB8A4 /* ViewController.swift */; };
 		582530F12036FBFB003AB8A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582530EF2036FBFB003AB8A4 /* Main.storyboard */; };
@@ -57,8 +58,10 @@
 		582F136520420334000395E8 /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 5813AD73203D460500149551 /* login.json */; };
 		5832862720486DBB00DDACEB /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5832862620486DBB00DDACEB /* Response.swift */; };
 		583286292048795500DDACEB /* InstagramExceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583286282048795500DDACEB /* InstagramExceptions.swift */; };
+		583D1F32206E3A0500748F0A /* ProfileImagePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583D1F31206E3A0500748F0A /* ProfileImagePostCollectionViewCell.swift */; };
 		58677283203771410037CEF3 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58677282203771410037CEF3 /* RootViewController.swift */; };
 		587166EF203CB1600012746F /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587166EE203CB1600012746F /* Validator.swift */; };
+		588443EC206D3D4A0016528D /* UserProfileComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588443EB206D3D4A0016528D /* UserProfileComponent.swift */; };
 		589DB8C6203ECC2E005CB8CC /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8C5203ECC2E005CB8CC /* SignupViewModel.swift */; };
 		589DB8C9203ECC75005CB8CC /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8C8203ECC75005CB8CC /* SignupViewController.swift */; };
 		589DB8CD203F154E005CB8CC /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DB8CC203F154E005CB8CC /* UIView.swift */; };
@@ -124,6 +127,7 @@
 		5813AD73203D460500149551 /* login.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
 		5813AD76203D478E00149551 /* InstagramAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramAPI.swift; sourceTree = "<group>"; };
 		5813AD78203D4C8800149551 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		581445102075EABA00561F7A /* AuthComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComponent.swift; sourceTree = "<group>"; };
 		582530E82036FBFB003AB8A4 /* Wadee_Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wadee_Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		582530EB2036FBFB003AB8A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		582530ED2036FBFB003AB8A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -144,8 +148,10 @@
 		582F136C20420335000395E8 /* Wadee_Instagram copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Wadee_Instagram copy-Info.plist"; path = "/Users/Wadee/Desktop/XCode Projects/Wadee_Instagram/Wadee_Instagram copy-Info.plist"; sourceTree = "<absolute>"; };
 		5832862620486DBB00DDACEB /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		583286282048795500DDACEB /* InstagramExceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramExceptions.swift; sourceTree = "<group>"; };
+		583D1F31206E3A0500748F0A /* ProfileImagePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImagePostCollectionViewCell.swift; sourceTree = "<group>"; };
 		58677282203771410037CEF3 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		587166EE203CB1600012746F /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		588443EB206D3D4A0016528D /* UserProfileComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileComponent.swift; sourceTree = "<group>"; };
 		589DB8C5203ECC2E005CB8CC /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		589DB8C8203ECC75005CB8CC /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		589DB8CC203F154E005CB8CC /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -241,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				58120B852043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift */,
+				583D1F31206E3A0500748F0A /* ProfileImagePostCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -361,6 +368,8 @@
 			children = (
 				589DB8D0203F401C005CB8CC /* UserComponent.swift */,
 				58B89FFE2063BA9D00C75FE2 /* UserPostComponent.swift */,
+				588443EB206D3D4A0016528D /* UserProfileComponent.swift */,
+				581445102075EABA00561F7A /* AuthComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -758,12 +767,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wadee_Instagram/Pods-Wadee_Instagram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -880,12 +893,14 @@
 				589DB8D1203F401C005CB8CC /* UserComponent.swift in Sources */,
 				58C668442044A43F00A5CBCF /* SignupRequest.swift in Sources */,
 				58D815782040180000E9F58E /* UIViewController.swift in Sources */,
+				583D1F32206E3A0500748F0A /* ProfileImagePostCollectionViewCell.swift in Sources */,
 				5810DE7D2045ECEA008F3F5D /* Task.swift in Sources */,
 				58D8157E2040B37800E9F58E /* SimpleNetworkUtility.swift in Sources */,
 				589DB8CD203F154E005CB8CC /* UIView.swift in Sources */,
 				58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */,
 				58120B862043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift in Sources */,
 				58E540752052EE6300F461E3 /* PhotoSelectionViewController.swift in Sources */,
+				581445112075EABA00561F7A /* AuthComponent.swift in Sources */,
 				58B89FFF2063BA9D00C75FE2 /* UserPostComponent.swift in Sources */,
 				58E5406820527A1200F461E3 /* InstagtamMainBarController.swift in Sources */,
 				58E5406C2052A8E700F461E3 /* InstagramBaseViewModel.swift in Sources */,
@@ -914,6 +929,7 @@
 				58CE1E9D205AD71C00BC8437 /* PhotoSelectionCell.swift in Sources */,
 				589DB8C9203ECC75005CB8CC /* SignupViewController.swift in Sources */,
 				58D05AB8203B603A005B0298 /* LoginViewModel.swift in Sources */,
+				588443EC206D3D4A0016528D /* UserProfileComponent.swift in Sources */,
 				589DB8C6203ECC2E005CB8CC /* SignupViewModel.swift in Sources */,
 				58D05AB2203B5F35005B0298 /* AuthCoordinator.swift in Sources */,
 				582530EC2036FBFB003AB8A4 /* AppDelegate.swift in Sources */,

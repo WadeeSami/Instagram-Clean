@@ -18,7 +18,7 @@ class UserPostsComponent{
                 encodedMedia.append(UIImageJPEGRepresentation(image, 0.5)!)
             }
         }
-        let postObject = Post(id: -1, content: content, media: encodedMedia)
+        let postObject = Post(id: -1, content: content, media: encodedMedia, mediaObjects: [])
         print (postObject)
         
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/posts")
@@ -28,7 +28,6 @@ class UserPostsComponent{
             
         }, failureHandler: {error in
             failureHandler()
-            print(error)
         })
         
     }

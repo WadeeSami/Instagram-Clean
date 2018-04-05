@@ -8,7 +8,8 @@ target 'Wadee_Instagram' do
   # Pods for Wadee_Instagram
  pod 'Alamofire'
   pod 'SnapKit', '~> 4.0.0'
-    
+  pod 'SwiftyJSON'    
+  pod 'AlamofireImage'
   target 'Wadee_InstagramTests' do
     inherit! :search_paths
     # Pods for testing

@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-
+import SwiftyJSON
 struct SimpleNetworkUtility : NetworkLayer{
     #if DEVELOPMENT
     let SERVER_URL = "http://localhost/api/v1"
@@ -53,45 +53,62 @@ struct SimpleNetworkUtility : NetworkLayer{
     }
     
     
-    static func performMultipartRequest(fromUrl url:URL, parameters params: [String:Any], images : [Data] = [],successHandler: @escaping successHandler, failureHandler: @escaping failureHandler){
-   
-            Alamofire.upload(
-                multipartFormData: { multipartFormData in
-                    multipartFormData.append("test content".data(using: .utf8)!, withName: "content")
-                    multipartFormData.append(images[0],
-                                             withName: "images[]",
-                                             fileName: "image.jpg",
-                                             mimeType: "image/jpeg")
-            },
-                to: url,
-                headers: [:],
-                encodingCompletion: { encodingResult in
-                    switch encodingResult {
-                    case .success(let upload, _, _):
-                        upload.validate()
-                        upload.responseJSON { response in
-                            // 1.
-                            guard response.result.isSuccess else {
-                                failureHandler(nil)
-                                return
-                            }
-                            
-                            // 2.
-                            guard let responseJSON = response.result.value as? [String: Any], let status_code = responseJSON["status_code"]  else{
-                                return failureHandler(nil)
-                            }
-                            
-                            successHandler(nil)
-                    
+    static func performMultipartRequest(fromUrl url:URL, parameters params: [String:Any], images : [Data] = [],successHandler: @escaping alamoSuccessHandler, failureHandler: @escaping failureHandler){
+        
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append("test content".data(using: .utf8)!, withName: "content")
+                multipartFormData.append(images[0],
+                                         withName: "images[]",
+                                         fileName: "image.jpg",
+                                         mimeType: "image/jpeg")
+        },
+            to: url,
+            headers: [:],
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.validate()
+                    upload.responseJSON { response in
+                        // 1.
+                        guard response.result.isSuccess else {
+                            failureHandler(nil)
+                            return
                         }
-                    case .failure(let encodingError):
-                        failureHandler(encodingError)
+                        
+                        // 2.
+                        guard let responseJSON = response.result.value as? [String: Any], let status_code = responseJSON["status_code"]  else{
+                            return failureHandler(nil)
+                        }
+                        
+                        successHandler(nil)
+                        
                     }
-                    
-            }
-            )
+                case .failure(let encodingError):
+                    failureHandler(encodingError)
+                }
+                
+        }
+        )
         
     }
     
+    static func performAlamoPostRequest(fromUrl url:URL, parameters params :[String:Any], successHandler: @escaping (alamoSuccessHandler), failureHandler: @escaping failureHandler){
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.httpBody, headers: nil).responseJSON(completionHandler: {response in
+            if response.result.isSuccess{
+                successHandler(response)
+            }else{
+                failureHandler(nil)
+            }
+        })
+    }
+    
+    
     
 }
+
+
+
+
+
+

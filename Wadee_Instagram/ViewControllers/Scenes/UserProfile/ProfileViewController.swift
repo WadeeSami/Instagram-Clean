@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class ProfileViewController:UICollectionViewController{
     static let profileImagesCellID = "ProfilePicturesCellId"
@@ -24,7 +25,13 @@ class ProfileViewController:UICollectionViewController{
         
         //register cells
         self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ProfileViewController.profileImagesCellID)
+        self.collectionView?.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostCollectionViewCell.PROFILE_COLLECTION_VIEW_CELL_ID)
         self.collectionView?.register(ProfileCollectionViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ProfileCollectionViewHeaderCell.COLLECTION_VIEW_HEADER_CELL_ID)
+        
+        profileViewModel?.reloadPostsCollectionViewClosure = { [weak self] in
+            self?.collectionView?.reloadData()
+        }
+        profileViewModel?.fetchUserPosts()
     }
     
     //MARK: initializer
@@ -59,7 +66,7 @@ class ProfileViewController:UICollectionViewController{
 }
 extension ProfileViewController: UICollectionViewDelegateFlowLayout{
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return (self.profileViewModel?.postsList.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -75,10 +82,15 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout{
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileViewController.profileImagesCellID, for: indexPath)
-        cell.backgroundColor = UIColor.red
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfilePostCollectionViewCell.PROFILE_COLLECTION_VIEW_CELL_ID, for: indexPath) as? ProfilePostCollectionViewCell
+//        cell?.userProfileImageView.af_setImage(withURL: <#T##URL#>)
+        if let post_media = self.profileViewModel?.postsList[indexPath.row].mediaObjects![0], let imageUrl = URL(string: post_media.href_original){
+                cell?.userProfileImageView.af_setImage(withURL: imageUrl)
+                
+        }
         
-        return cell
+        
+        return cell!
     }
     
 }
@@ -94,3 +106,9 @@ extension ProfileViewController{
         return CGSize(width: view.frame.width, height: 200)
     }
 }
+
+
+
+
+
+

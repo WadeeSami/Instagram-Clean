@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class UserComponent{
     static let USER_LOGIN_STATUS_KEY = "user_login_status_key"
@@ -15,10 +16,10 @@ class UserComponent{
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/registration")
         //        SimpleNetworkUtility.performGetRequest(fromUrl: url, successHandler: { data in }, failureHandler: {error in })
         SimpleNetworkUtility.performPostRequest(fromUrl: url, parameters: ["username":username, "email":email, "password":password], successHandler: {data in
-            let res = try? JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
+            _ = try? JSONSerialization.jsonObject(with: data!, options: []) as! [String:Any]
             
         }, failureHandler: {error in
-            print(error)
+            print(error!)
         })
         let loginEndpoint = InstagramAPI.signup
         let response = loginEndpoint.testingData
@@ -36,5 +37,39 @@ class UserComponent{
     
     static func isUserLoggedIn()->Bool{
         return UserDefaults.standard.bool(forKey: USER_LOGIN_STATUS_KEY) 
+    }
+    
+    static func login(with username:String, and password:String, successHandler: @escaping ()->(), failureHandler: @escaping ()->()){
+        //convert the images to data
+        
+        let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/login")
+        
+        let params = ["email":username, "password":password]
+        SimpleNetworkUtility.performAlamoPostRequest(fromUrl: url, parameters: params, successHandler: { response in
+            
+            let jsonResponse = JSON(response?.result.value as Any)
+            if let statusCode = jsonResponse["status_code"].int{
+                let successRange = 200..<300
+                if successRange.contains(statusCode) {
+                    print ("success")
+                }else{
+                    print ("WTH")
+                }
+            }
+            print(jsonResponse)
+            //handle cookies token
+            guard let authToken = response?.response?.allHeaderFields[AuthComponent.AUTH_TOKEN_NAME] as? String else{
+                //raise exception or simething
+                return
+            }
+            AuthComponent.storeAuthToken(authToken: authToken)
+            
+            
+            successHandler()
+        }, failureHandler: {error in
+            print ("eerrr")
+            failureHandler()
+        })
+        
     }
 }
