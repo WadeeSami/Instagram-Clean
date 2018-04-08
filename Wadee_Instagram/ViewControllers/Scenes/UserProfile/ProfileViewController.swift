@@ -31,6 +31,10 @@ class ProfileViewController:UICollectionViewController{
         profileViewModel?.reloadPostsCollectionViewClosure = { [weak self] in
             self?.collectionView?.reloadData()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         profileViewModel?.fetchUserPosts()
     }
     
@@ -83,10 +87,17 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfilePostCollectionViewCell.PROFILE_COLLECTION_VIEW_CELL_ID, for: indexPath) as? ProfilePostCollectionViewCell
-//        cell?.userProfileImageView.af_setImage(withURL: <#T##URL#>)
         if let post_media = self.profileViewModel?.postsList[indexPath.row].mediaObjects![0], let imageUrl = URL(string: post_media.href_original){
                 cell?.userProfileImageView.af_setImage(withURL: imageUrl)
-                
+//            cell?.userProfileImageView.af_setImage(withURL: imageUrl, placeholderImage: #imageLiteral(resourceName: "grid"))
+            URLSession.shared.dataTask(with: imageUrl){ (data, response, error ) in
+                guard let imageData = data else {return}
+                let image = UIImage(data: imageData)
+                DispatchQueue.main.async {
+                    cell?.userProfileImageView.image  = image
+                }
+            }.resume()
+            
         }
         
         

@@ -13,8 +13,8 @@ class ProfilePostCollectionViewCell:UICollectionViewCell{
     let userProfileImageView : UIImageView = {
         let profileImage = UIImageView()
         profileImage.clipsToBounds = true
-        profileImage.layer.cornerRadius =  40
-        profileImage.backgroundColor = UIColor.blue
+//         profileImage.layer.cornerRadius =  40
+
         profileImage.translatesAutoresizingMaskIntoConstraints = false
         return profileImage
     }()

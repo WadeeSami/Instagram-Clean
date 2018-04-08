@@ -72,6 +72,7 @@ extension AppCoordinator: AuthCoordinatorDelegate{
     
     func userDidAuthenticate() {
         //remove auth coordinator
+        UserComponent.setUserLoginStatus(loggedIn: true)
         self.childCoordinators.removeLast()
         self.rootViewController.popViewController(animated: true)
         self.startProfileFlow()

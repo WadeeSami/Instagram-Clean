@@ -39,12 +39,15 @@ class InstagtamMainBarController:UITabBarController{
         let profileCoordinator = ProfileCoordinator(with: self)
         profileCoordinator.profileCoordinatorDelegate = self.tabBarCoordinator
         
-        let profileViewModel = ProfileViewModel()
-        let profileViewController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        profileViewController.profileViewModel = profileViewModel
-        profileViewController.profileCoordinator = profileCoordinator
+//        let profileViewModel = ProfileViewModel()
+//        let profileViewController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        profileViewController.profileViewModel = profileViewModel
+//        profileViewController.profileCoordinator = profileCoordinator
         
-        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: profileViewController, relatedCoordinator: nil, relatedViewModel: nil)
+        let homeViewController = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        homeViewController.homeViewModel = ProfileViewModel()
+        
+        let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: homeViewController, relatedCoordinator: nil, relatedViewModel: nil)
         
         //search
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"), relatedCoordinator: nil, relatedViewModel: nil)

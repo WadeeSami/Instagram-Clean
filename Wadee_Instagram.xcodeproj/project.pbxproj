@@ -84,6 +84,8 @@
 		58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AB3203B601F005B0298 /* LoginViewController.swift */; };
 		58D05AB8203B603A005B0298 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05AB7203B603A005B0298 /* LoginViewModel.swift */; };
 		58D05ABB203B619E005B0298 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05ABA203B619E005B0298 /* UIColor.swift */; };
+		58D31F1E207A8EC600FE7E2B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D31F1D207A8EC600FE7E2B /* HomeViewController.swift */; };
+		58D31F21207A927000FE7E2B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D31F20207A927000FE7E2B /* HomeCollectionViewCell.swift */; };
 		58D815762040063000E9F58E /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D815752040063000E9F58E /* Exceptions.swift */; };
 		58D815782040180000E9F58E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D815772040180000E9F58E /* UIViewController.swift */; };
 		58D8157A204086CE00E9F58E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D81579204086CE00E9F58E /* User.swift */; };
@@ -174,6 +176,8 @@
 		58D05AB3203B601F005B0298 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		58D05AB7203B603A005B0298 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		58D05ABA203B619E005B0298 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		58D31F1D207A8EC600FE7E2B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		58D31F20207A927000FE7E2B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		58D815752040063000E9F58E /* Exceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
 		58D815772040180000E9F58E /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		58D81579204086CE00E9F58E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -505,6 +509,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		58D31F1C207A8EB000FE7E2B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				58D31F1F207A925700FE7E2B /* Cells */,
+				58D31F1D207A8EC600FE7E2B /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		58D31F1F207A925700FE7E2B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				58D31F20207A927000FE7E2B /* HomeCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		58E540712052EDAB00F461E3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +542,7 @@
 		58E540722052EDF700F461E3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				58D31F1C207A8EB000FE7E2B /* Home */,
 				58E540732052EE3D00F461E3 /* PhotoSelection */,
 				582F133C2041F0C2000395E8 /* UserProfile */,
 				589DB8C7203ECC67005CB8CC /* Signup */,
@@ -894,6 +916,7 @@
 				58C668442044A43F00A5CBCF /* SignupRequest.swift in Sources */,
 				58D815782040180000E9F58E /* UIViewController.swift in Sources */,
 				583D1F32206E3A0500748F0A /* ProfileImagePostCollectionViewCell.swift in Sources */,
+				58D31F21207A927000FE7E2B /* HomeCollectionViewCell.swift in Sources */,
 				5810DE7D2045ECEA008F3F5D /* Task.swift in Sources */,
 				58D8157E2040B37800E9F58E /* SimpleNetworkUtility.swift in Sources */,
 				589DB8CD203F154E005CB8CC /* UIView.swift in Sources */,
@@ -909,6 +932,7 @@
 				587166EF203CB1600012746F /* Validator.swift in Sources */,
 				5813AD79203D4C8800149551 /* Networking.swift in Sources */,
 				58D8157C2040B1C600E9F58E /* NetworkLayer.swift in Sources */,
+				58D31F1E207A8EC600FE7E2B /* HomeViewController.swift in Sources */,
 				5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */,
 				58C668462044A55E00A5CBCF /* Dispatcher.swift in Sources */,
 				582530EE2036FBFB003AB8A4 /* ViewController.swift in Sources */,
