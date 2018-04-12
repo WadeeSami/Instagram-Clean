@@ -92,6 +92,8 @@
 		58D8157C2040B1C600E9F58E /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D8157B2040B1C600E9F58E /* NetworkLayer.swift */; };
 		58D8157E2040B37800E9F58E /* SimpleNetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D8157D2040B37800E9F58E /* SimpleNetworkUtility.swift */; };
 		58E36F80207F675D0006234E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E36F7F207F675D0006234E /* UIImageView.swift */; };
+		58E36F83207F7F3E0006234E /* SearchUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E36F82207F7F3E0006234E /* SearchUsersViewController.swift */; };
+		58E36F86207F8A470006234E /* SearchUsersViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E36F85207F8A470006234E /* SearchUsersViewControllerCell.swift */; };
 		58E5406820527A1200F461E3 /* InstagtamMainBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E5406720527A1200F461E3 /* InstagtamMainBarController.swift */; };
 		58E5406A2052823700F461E3 /* MainBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E540692052823700F461E3 /* MainBarCoordinator.swift */; };
 		58E5406C2052A8E700F461E3 /* InstagramBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E5406B2052A8E700F461E3 /* InstagramBaseViewModel.swift */; };
@@ -185,6 +187,8 @@
 		58D8157B2040B1C600E9F58E /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		58D8157D2040B37800E9F58E /* SimpleNetworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNetworkUtility.swift; sourceTree = "<group>"; };
 		58E36F7F207F675D0006234E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		58E36F82207F7F3E0006234E /* SearchUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewController.swift; sourceTree = "<group>"; };
+		58E36F85207F8A470006234E /* SearchUsersViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewControllerCell.swift; sourceTree = "<group>"; };
 		58E5406720527A1200F461E3 /* InstagtamMainBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagtamMainBarController.swift; sourceTree = "<group>"; };
 		58E540692052823700F461E3 /* MainBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBarCoordinator.swift; sourceTree = "<group>"; };
 		58E5406B2052A8E700F461E3 /* InstagramBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramBaseViewModel.swift; sourceTree = "<group>"; };
@@ -529,6 +533,23 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		58E36F81207F7EF10006234E /* SearchUsers */ = {
+			isa = PBXGroup;
+			children = (
+				58E36F84207F89FD0006234E /* SearchUsersCollectionViewControllerCell */,
+				58E36F82207F7F3E0006234E /* SearchUsersViewController.swift */,
+			);
+			path = SearchUsers;
+			sourceTree = "<group>";
+		};
+		58E36F84207F89FD0006234E /* SearchUsersCollectionViewControllerCell */ = {
+			isa = PBXGroup;
+			children = (
+				58E36F85207F8A470006234E /* SearchUsersViewControllerCell.swift */,
+			);
+			path = SearchUsersCollectionViewControllerCell;
+			sourceTree = "<group>";
+		};
 		58E540712052EDAB00F461E3 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -545,6 +566,7 @@
 		58E540722052EDF700F461E3 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				58E36F81207F7EF10006234E /* SearchUsers */,
 				58D31F1C207A8EB000FE7E2B /* Home */,
 				58E540732052EE3D00F461E3 /* PhotoSelection */,
 				582F133C2041F0C2000395E8 /* UserProfile */,
@@ -939,6 +961,7 @@
 				58D31F1E207A8EC600FE7E2B /* HomeViewController.swift in Sources */,
 				5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */,
 				58C668462044A55E00A5CBCF /* Dispatcher.swift in Sources */,
+				58E36F83207F7F3E0006234E /* SearchUsersViewController.swift in Sources */,
 				582530EE2036FBFB003AB8A4 /* ViewController.swift in Sources */,
 				58D05AAD203B5A88005B0298 /* AppCoordinator.swift in Sources */,
 				58D05ABB203B619E005B0298 /* UIColor.swift in Sources */,
@@ -953,6 +976,7 @@
 				58B8A0032063C43E00C75FE2 /* SharePhotoViewModel.swift in Sources */,
 				582F13422041F2CA000395E8 /* ProfileCoordinator.swift in Sources */,
 				5810DE7F2045ED73008F3F5D /* LoginTask.swift in Sources */,
+				58E36F86207F8A470006234E /* SearchUsersViewControllerCell.swift in Sources */,
 				58C6684220449F9C00A5CBCF /* LoginRequest.swift in Sources */,
 				58CE1E9D205AD71C00BC8437 /* PhotoSelectionCell.swift in Sources */,
 				589DB8C9203ECC75005CB8CC /* SignupViewController.swift in Sources */,

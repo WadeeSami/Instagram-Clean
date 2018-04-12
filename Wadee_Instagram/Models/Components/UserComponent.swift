@@ -10,6 +10,17 @@ import Foundation
 import SwiftyJSON
 
 class UserComponent{
+    private static func extractUserImage(userInfo:JSON)->UserMedia?{
+        if !userInfo["profile_image"].isEmpty{
+            let media_dict = userInfo["profile_image"]
+            
+            let user_media = UserMedia(id: 1, href_small: media_dict["href_small"].string!, href_original: media_dict["href_original"].string!, href_big: media_dict["href_big"].string!, original_name: "user_info", height: nil, width: nil, original_extension: "JPEG")
+            return user_media
+        }
+        
+        return nil
+    }
+    
     static let USER_LOGIN_STATUS_KEY = "user_login_status_key"
     
     static func signUp(withUsername username:String,email:String, andPassword password:String ,completionHandler handler:(_ userInfo:String?, Error?)->()){
@@ -71,5 +82,27 @@ class UserComponent{
             failureHandler()
         })
         
+    }
+
+    static func searchUsersWith(searchTerm:String, successHandler: @escaping ([User])->(), failureHandler: @escaping ()->()){
+        let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/users")
+        SimpleNetworkUtility.performAlamofireGetRequest(fromUrl: url, parameters: ["search_term":searchTerm], successHandler: {response in
+            var usersList = [User]()
+            let json = JSON(response?.result.value)
+            guard let statusCode = json["status_code"].int, statusCode == 200 else{
+                print ("status code eeror")
+                return
+            }
+            if let jsonData = json["data"].array  {
+                for subJson in jsonData {
+                    var user = User(username: subJson["username"].string!, userMedia: nil)
+                    user.userMedia = UserComponent.extractUserImage(userInfo: subJson)
+                    usersList.append(user)
+                }
+            }
+            successHandler(usersList)
+        }, failureHandler: {error in
+            print ("Horrible Error")
+        })
     }
 }
