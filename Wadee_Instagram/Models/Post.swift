@@ -14,6 +14,7 @@ struct Post {
     var media: [Data]
     var mediaObjects: [PostMedia]?
     
+    var postUser:User?
 }
 
 

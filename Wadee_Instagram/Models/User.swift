@@ -11,6 +11,21 @@ protocol InstagramBaseModel:Codable{
     var id:Int{get set}
     func translateToJson()
 }
-struct User:Codable {
-    var first_name:String
+struct User {
+    var username:String
+    var userMedia:UserMedia?
+}
+
+struct UserMedia {
+    var id: Int
+    var href_small:String
+    var href_original:String
+    var href_big:String
+    var original_name :String
+    
+    var height:Double?
+    var width:Double?
+    var original_extension:String
+    
+    
 }

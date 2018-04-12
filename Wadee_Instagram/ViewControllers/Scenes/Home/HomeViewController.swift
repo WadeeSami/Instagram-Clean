@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AlamofireImage
+
 class HomeViewController:UICollectionViewController{
     var homeViewModel: ProfileViewModel?
     var homeCoordinator: ProfileCoordinator?
@@ -26,6 +28,7 @@ class HomeViewController:UICollectionViewController{
         super.viewWillAppear(animated)
         self.homeViewModel?.fetchUserPosts()
     }
+    
     func setupNavBar(){
         self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "logo2"))
     }
@@ -38,7 +41,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: 390)
+        var height :CGFloat = 50 + 8+8
+        height += self.view.bounds.width
+        height += 50
+        height += 80
+        return CGSize(width: self.view.frame.width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -51,40 +58,21 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.HOME_VC_CELL_ID, for: indexPath) as! HomeCollectionViewCell
-        cell.nameLabel.text = "wadee"
         
-        if let post_media = self.homeViewModel?.postsList[indexPath.row].mediaObjects![0], let imageUrl = URL(string: post_media.href_original){
-            
-            URLSession.shared.dataTask(with: imageUrl){ (data, response, error ) in
-                guard let imageData = data else {return}
-                let image = UIImage(data: imageData)
-                DispatchQueue.main.async {
-                    cell.cellImageView.image = image
-                    cell.profileImage.image = image
-                }
-                }.resume()
         
+        let postObject = self.homeViewModel?.postsList[indexPath.row]
+        cell.nameLabel.text = postObject?.postUser?.username
+        cell.captionLabel.text = postObject?.content
+        if  (postObject?.mediaObjects?.count)! >= 1,let post_media = postObject?.mediaObjects![0], let imageUrl = URL(string: post_media.href_original){
+            cell.fetchPostImageFromUrl(imageURL: imageUrl)
+        
+        }
+    
+        if let post_user_media = self.homeViewModel?.postsList[indexPath.row].postUser?.userMedia, let imageUrl = URL(string: post_user_media.href_small){
+            cell.profileImage.fetchImageFromURL(imageUrl: imageUrl)
         }
         return cell
     }
     
 }
 
-//extension ProfileViewController{
-//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileCollectionViewHeaderCell.COLLECTION_VIEW_HEADER_CELL_ID, for: indexPath)
-//
-//        return headerCell
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.width, height: 200)
-//    }
-//}
-//
-//
-//
-//
-//
-//
-//

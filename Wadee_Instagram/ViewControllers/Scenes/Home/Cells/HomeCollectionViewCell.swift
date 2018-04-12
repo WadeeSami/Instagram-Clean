@@ -66,6 +66,20 @@ class HomeCollectionViewCell:UICollectionViewCell{
         return btn
     }()
     
+    let bookmarkBtn : UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.setImage(#imageLiteral(resourceName: "ribbon").withRenderingMode(.alwaysOriginal), for: .normal)
+        return btn
+    }()
+    
+    let captionLabel : UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "this is a text\t hello again \n\n 2 weeks ago"
+        return label
+    }()
+    
     func setupStackView()-> UIStackView{
         let stackView = UIStackView(arrangedSubviews: [likeBtn, commentBtn, shareBtn])
         stackView.axis = .horizontal
@@ -73,6 +87,7 @@ class HomeCollectionViewCell:UICollectionViewCell{
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.addSubview(profileImage)
@@ -98,6 +113,7 @@ class HomeCollectionViewCell:UICollectionViewCell{
         cellImageView.snp.makeConstraints { (elm) in
             elm.left.right.equalTo(self)
             elm.top.equalTo(profileImage.snp.bottom).offset(5)
+            elm.height.equalTo(self.snp.width).multipliedBy(1)
         }
         
         let stackView = setupStackView()
@@ -105,12 +121,31 @@ class HomeCollectionViewCell:UICollectionViewCell{
         stackView.snp.makeConstraints { (make) in
             make.top.equalTo(cellImageView.snp.bottom)
             make.height.equalTo(50)
-            make.left.bottom.equalTo(self)
+            make.left.equalTo(self)
             make.width.equalTo(120)
         }
+        
+        self.addSubview(bookmarkBtn)
+        bookmarkBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(self).offset(-5)
+            make.centerY.equalTo(stackView.snp.centerY)
+        }
+        
+        self.addSubview(captionLabel)
+        captionLabel.snp.makeConstraints { (make) in
+            make.left.right.equalTo(self)
+            make.top.equalTo(stackView.snp.bottom)
+            make.bottom.equalTo(self)
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    public func fetchPostImageFromUrl(imageURL: URL){
+        self.cellImageView.fetchImageFromURL(imageUrl: imageURL)
+
     }
 }
