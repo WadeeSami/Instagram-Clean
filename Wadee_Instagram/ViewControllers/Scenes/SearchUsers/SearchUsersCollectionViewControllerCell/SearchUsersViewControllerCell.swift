@@ -59,9 +59,9 @@ class SearchUsersCollectionViewControllerCell:UICollectionViewCell{
     private func configureCellWithUserInfo(user:User){
         self.usernameLabel.text = user.username
         if let userMedia = user.userMedia{
-            self.userProfileImage.fetchImageFromURL(imageUrl: URL(string: (user.userMedia?.href_small)!)!)
+            self.userProfileImage.fetchImageFromURL(imageUrl: URL(string: (userMedia.href_small))!)
         }else{
-            self.userProfileImage.setImageFrom(name: self.user?.username, width: 50, height: 50)
+            _ = self.userProfileImage.setImageFrom(name: self.user?.username, width: 50, height: 50)
         }
         
     }

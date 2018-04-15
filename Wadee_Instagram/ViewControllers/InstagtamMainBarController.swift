@@ -36,14 +36,7 @@ class InstagtamMainBarController:UITabBarController{
     //MARK: private methods
     func setupViewControllers() {
         //home
-        let profileCoordinator = ProfileCoordinator(with: self)
-        profileCoordinator.profileCoordinatorDelegate = self.tabBarCoordinator
-        
-//        let profileViewModel = ProfileViewModel()
-//        let profileViewController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
-//        profileViewController.profileViewModel = profileViewModel
-//        profileViewController.profileCoordinator = profileCoordinator
-        
+       
         let homeViewController = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
         homeViewController.homeViewModel = ProfileViewModel()
         
@@ -70,9 +63,16 @@ class InstagtamMainBarController:UITabBarController{
         let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), relatedCoordinator: nil, relatedViewModel:nil)
         
         //user profile
-        let userProfileController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let profileCoordinator = ProfileCoordinator(with: self)
+        profileCoordinator.profileCoordinatorDelegate = self.tabBarCoordinator
         
-        let userProfileNavController = UINavigationController(rootViewController: userProfileController)
+        let profileViewModel = ProfileViewModel()
+        let profileViewController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        profileViewController.profileViewModel = profileViewModel
+        profileViewController.profileCoordinator = profileCoordinator
+        
+    
+        let userProfileNavController = UINavigationController(rootViewController: profileViewController)
         
         userProfileNavController.tabBarItem.image = #imageLiteral(resourceName: "profile_unselected")
         userProfileNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "profile_selected")
