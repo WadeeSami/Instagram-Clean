@@ -12,6 +12,9 @@ import SnapKit
 class ProfileCollectionViewHeaderCell: UICollectionViewCell{
     static let COLLECTION_VIEW_HEADER_CELL_ID = "CollectionViewHeaderCell"
     let PROFILE_IMAGE_VIEW_WIDTH = 80
+    
+    var user : User?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.setupProfileImage()
@@ -121,6 +124,14 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
             profileImageview.top.equalTo(self).offset(12)
             profileImageview.width.equalTo(PROFILE_IMAGE_VIEW_WIDTH)
             profileImageview.height.equalTo(PROFILE_IMAGE_VIEW_WIDTH)
+        }
+        let usernameLabel = UILabel()
+        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
+        usernameLabel.text = "test"
+        self.addSubview(usernameLabel)
+        usernameLabel.snp.makeConstraints { (make) in
+            make.centerX.equalTo(userProfileImageView.snp.centerX)
+            make.top.equalTo(userProfileImageView.snp.bottom)
         }
         
     }

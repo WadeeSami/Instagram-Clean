@@ -49,6 +49,12 @@ class InstagtamMainBarController:UITabBarController{
         searchNavController.tabBarItem.image = #imageLiteral(resourceName: "search_unselected")
         searchNavController.tabBarItem.selectedImage = #imageLiteral(resourceName: "search_selected")
         
+        let searchUsersCoordinator = SearchUsersCoordinator()
+//        userSearchVC.delegate = searchUsersCoordinator
+        userSearchVC.userSearchControllerCoordinator = searchUsersCoordinator
+        searchUsersCoordinator.rootViewController = searchNavController
+        
+
         //Photos
         let photoSelectionVC = PhotoSelectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let photoSelectionNavigationController = UINavigationController(rootViewController: photoSelectionVC)
@@ -63,10 +69,16 @@ class InstagtamMainBarController:UITabBarController{
         let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), relatedCoordinator: nil, relatedViewModel:nil)
         
         //user profile
+        guard let loggedInUser = AuthComponent.getLoggedInUserData() else{
+            print("What a terrible error !!!")
+            return
+        }
         let profileCoordinator = ProfileCoordinator(with: self)
         profileCoordinator.profileCoordinatorDelegate = self.tabBarCoordinator
         
         let profileViewModel = ProfileViewModel()
+        profileViewModel.userId = loggedInUser.id!
+        
         let profileViewController = ProfileViewController(collectionViewLayout: UICollectionViewFlowLayout())
         profileViewController.profileViewModel = profileViewModel
         profileViewController.profileCoordinator = profileCoordinator

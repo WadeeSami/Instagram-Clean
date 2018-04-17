@@ -13,7 +13,6 @@ import SwiftyJSON
 class UserProfileComponent{
     static func fetchUserPostImages(limit:Int = 10, offset:Int = 0, completion: @escaping ([Post]?) -> Void) {
         let postURL = SimpleNetworkUtility.baseUrl.appendingPathComponent("/posts")
-        print("This is the url \(postURL)")
         Alamofire.request(
             postURL,
             method: .get,
@@ -39,7 +38,7 @@ class UserProfileComponent{
                             
                             if jsonPost["user_info"].exists() {
                                 let user_info_dict = jsonPost["user_info"]
-                                var postUserInfo = User(username: user_info_dict["username"].string!, userMedia:nil)
+                                var postUserInfo = User(id:user_info_dict["id"].int ,username: user_info_dict["username"].string!, userMedia:nil)
                                 if (!user_info_dict["profile_image"].isEmpty ){
                                     let media_dict = user_info_dict["profile_image"]
                                     

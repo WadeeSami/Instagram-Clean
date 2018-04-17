@@ -8,7 +8,12 @@
 
 import UIKit
 import SnapKit
+
+
 class SearchUsersViewController:UICollectionViewController{
+    
+    var userSearchControllerCoordinator:SearchUsersCoordinator?
+    fileprivate var searchUsersCoordinator: SearchUsersCoordinator?
     private var userObjectsList = [User]()
     // pragma MARK: lifecycle
     override func viewDidLoad() {
@@ -19,7 +24,9 @@ class SearchUsersViewController:UICollectionViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         fetchUsers()
+        searchBar.isHidden = false
     }
     
     func fetchUsers(){
@@ -54,6 +61,7 @@ class SearchUsersViewController:UICollectionViewController{
 
 
 extension SearchUsersViewController: UICollectionViewDelegateFlowLayout{
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.userObjectsList.count
     }
@@ -81,3 +89,9 @@ extension SearchUsersViewController: UICollectionViewDelegateFlowLayout{
     
 }
 
+extension SearchUsersViewController{
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        searchBar.isHidden = true
+        self.userSearchControllerCoordinator?.userTabClicked(userId: 2)
+    }
+}

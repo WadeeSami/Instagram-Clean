@@ -94,6 +94,8 @@
 		58E36F80207F675D0006234E /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E36F7F207F675D0006234E /* UIImageView.swift */; };
 		58E36F83207F7F3E0006234E /* SearchUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E36F82207F7F3E0006234E /* SearchUsersViewController.swift */; };
 		58E36F86207F8A470006234E /* SearchUsersViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E36F85207F8A470006234E /* SearchUsersViewControllerCell.swift */; };
+		58E524312083D29500266FC2 /* SearchUsersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E524302083D29500266FC2 /* SearchUsersCoordinator.swift */; };
+		58E524332083E36500266FC2 /* UserUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E524322083E36500266FC2 /* UserUtil.swift */; };
 		58E5406820527A1200F461E3 /* InstagtamMainBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E5406720527A1200F461E3 /* InstagtamMainBarController.swift */; };
 		58E5406A2052823700F461E3 /* MainBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E540692052823700F461E3 /* MainBarCoordinator.swift */; };
 		58E5406C2052A8E700F461E3 /* InstagramBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E5406B2052A8E700F461E3 /* InstagramBaseViewModel.swift */; };
@@ -189,6 +191,8 @@
 		58E36F7F207F675D0006234E /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		58E36F82207F7F3E0006234E /* SearchUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewController.swift; sourceTree = "<group>"; };
 		58E36F85207F8A470006234E /* SearchUsersViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersViewControllerCell.swift; sourceTree = "<group>"; };
+		58E524302083D29500266FC2 /* SearchUsersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsersCoordinator.swift; sourceTree = "<group>"; };
+		58E524322083E36500266FC2 /* UserUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUtil.swift; sourceTree = "<group>"; };
 		58E5406720527A1200F461E3 /* InstagtamMainBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagtamMainBarController.swift; sourceTree = "<group>"; };
 		58E540692052823700F461E3 /* MainBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBarCoordinator.swift; sourceTree = "<group>"; };
 		58E5406B2052A8E700F461E3 /* InstagramBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramBaseViewModel.swift; sourceTree = "<group>"; };
@@ -360,6 +364,7 @@
 			children = (
 				587166EE203CB1600012746F /* Validator.swift */,
 				583286282048795500DDACEB /* InstagramExceptions.swift */,
+				58E524322083E36500266FC2 /* UserUtil.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -538,6 +543,7 @@
 			children = (
 				58E36F84207F89FD0006234E /* SearchUsersCollectionViewControllerCell */,
 				58E36F82207F7F3E0006234E /* SearchUsersViewController.swift */,
+				58E524302083D29500266FC2 /* SearchUsersCoordinator.swift */,
 			);
 			path = SearchUsers;
 			sourceTree = "<group>";
@@ -957,6 +963,7 @@
 				58D05AAB203B5A60005B0298 /* Coordinator.swift in Sources */,
 				587166EF203CB1600012746F /* Validator.swift in Sources */,
 				5813AD79203D4C8800149551 /* Networking.swift in Sources */,
+				58E524332083E36500266FC2 /* UserUtil.swift in Sources */,
 				58D8157C2040B1C600E9F58E /* NetworkLayer.swift in Sources */,
 				58D31F1E207A8EC600FE7E2B /* HomeViewController.swift in Sources */,
 				5813AD77203D478E00149551 /* InstagramAPI.swift in Sources */,
@@ -993,6 +1000,7 @@
 				58E5406E2052E26C00F461E3 /* ViewModelManageable.swift in Sources */,
 				58120B882043E79A004C9C01 /* HeaderCellViewModel.swift in Sources */,
 				5832862720486DBB00DDACEB /* Response.swift in Sources */,
+				58E524312083D29500266FC2 /* SearchUsersCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

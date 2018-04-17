@@ -57,6 +57,8 @@ extension AuthCoordinator: LoginViewModelCoordinatorDelegate{
         //go to profile
         self.navigationController?.popViewController(animated: true)
         
+        UserComponent.setUserLoginStatus(loggedIn: true)
+        //store user info in user defaults
         self.authCoordinatorDelegate?.userDidAuthenticate()
     }
     

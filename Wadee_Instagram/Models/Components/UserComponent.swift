@@ -67,7 +67,6 @@ class UserComponent{
                     print ("WTH")
                 }
             }
-            print(jsonResponse)
             //handle cookies token
             guard let authToken = response?.response?.allHeaderFields[AuthComponent.AUTH_TOKEN_NAME] as? String else{
                 //raise exception or simething
@@ -75,7 +74,12 @@ class UserComponent{
             }
             AuthComponent.storeAuthToken(authToken: authToken)
             
-            
+            //store user info
+            if jsonResponse["data"].exists(), let userData = response?.result.value as? [String:Any]{
+                
+                AuthComponent.saveLoggedInUserData(userDict: userData["data"] as! [String : Any])
+            }
+
             successHandler()
         }, failureHandler: {error in
             print ("eerrr")
@@ -88,14 +92,14 @@ class UserComponent{
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/users")
         SimpleNetworkUtility.performAlamofireGetRequest(fromUrl: url, parameters: ["search_term":searchTerm], successHandler: {response in
             var usersList = [User]()
-            let json = JSON(response?.result.value)
+            let json = JSON(response?.result.value! as Any)
             guard let statusCode = json["status_code"].int, statusCode == 200 else{
                 print ("status code eeror")
                 return
             }
             if let jsonData = json["data"].array  {
                 for subJson in jsonData {
-                    var user = User(username: subJson["username"].string!, userMedia: nil)
+                    var user = User(id:subJson["id"].int ,username: subJson["username"].string!, userMedia: nil)
                     user.userMedia = UserComponent.extractUserImage(userInfo: subJson)
                     usersList.append(user)
                 }
@@ -104,5 +108,25 @@ class UserComponent{
         }, failureHandler: {error in
             print ("Horrible Error")
         })
+    }
+
+    static func getUserInfo(withUserId userId:Int)->User?{
+        var user : User?
+        let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/users/\(userId)")
+        SimpleNetworkUtility.performAlamofireGetRequest(fromUrl: url, parameters: [:], successHandler: {response in
+            let json = JSON(response?.result.value as Any)
+            guard let statusCode = json["status_code"].int, statusCode == 200 else{
+                print ("status code error")
+                return
+            }
+            if let userJson = json["data"].dictionary{
+                 user = User(id: userJson["id"]?.int, username: (userJson["username"]?.string)!, userMedia: nil)
+            }
+            
+        }, failureHandler: {error in
+            print ("error in fetch user info api")
+        })
+        return user
+        
     }
 }

@@ -8,12 +8,18 @@
 
 import UIKit
 import AlamofireImage
+public enum ProfileViewControllerMode{
+    case USER_HOME_PAGE
+    case DISPLAY_PROFILE_PAGE
+}
 
 class ProfileViewController:UICollectionViewController{
     static let profileImagesCellID = "ProfilePicturesCellId"
     //MARK: properties
     var profileViewModel:ProfileViewModel?
     var profileCoordinator: ProfileCoordinator?
+    
+    var profileControllerMode:ProfileViewControllerMode = ProfileViewControllerMode.USER_HOME_PAGE
     
     //MARK: life cycle methods
     override func viewDidLoad() {
@@ -44,9 +50,14 @@ class ProfileViewController:UICollectionViewController{
     //MARK: private methods
     private func setupNavigationBar(){
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationItem.hidesBackButton = true
         self.navigationItem.title = "User Profile"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(handleProfilePageOptions))
+        
+        if self.profileControllerMode == ProfileViewControllerMode.USER_HOME_PAGE {
+            self.navigationItem.hidesBackButton = true
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear"), style: .plain, target: self, action: #selector(handleProfilePageOptions))
+        }else{
+            self.navigationItem.hidesBackButton = false
+        }
     }
     
     //MARK: handlers and selectors
