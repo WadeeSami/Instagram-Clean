@@ -92,6 +92,6 @@ extension SearchUsersViewController: UICollectionViewDelegateFlowLayout{
 extension SearchUsersViewController{
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         searchBar.isHidden = true
-        self.userSearchControllerCoordinator?.userTabClicked(userId: 2)
+        self.userSearchControllerCoordinator?.userTabClicked(userId: self.userObjectsList[indexPath.row].id!)
     }
 }

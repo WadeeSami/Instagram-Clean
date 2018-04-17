@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 class UserProfileComponent{
-    static func fetchUserPostImages(limit:Int = 10, offset:Int = 0, completion: @escaping ([Post]?) -> Void) {
-        let postURL = SimpleNetworkUtility.baseUrl.appendingPathComponent("/posts")
+    static func fetchUserPostImages(userId:Int, limit:Int = 10, offset:Int = 0, completion: @escaping ([Post]?) -> Void) {
+        let postURL = SimpleNetworkUtility.baseUrl.appendingPathComponent("/users/\(userId)/posts")
         Alamofire.request(
             postURL,
             method: .get,

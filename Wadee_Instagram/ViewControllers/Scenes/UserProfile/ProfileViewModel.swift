@@ -11,14 +11,14 @@ import  Foundation
 class ProfileViewModel{
     typealias didFetchPosts = () -> ()
     
-    var userId : Int = 11
+    var userId : Int = (AuthComponent.getLoggedInUserData()?.id)!
     
     
     public var postsList = [Post]()
     public var reloadPostsCollectionViewClosure : didFetchPosts?
     
     func fetchUserPosts(){
-        UserProfileComponent.fetchUserPostImages(completion: { (postsList) in
+        UserProfileComponent.fetchUserPostImages(userId: self.userId,completion: { (postsList) in
             self.postsList = postsList!
             
             self.reloadPostsCollectionViewClosure!()
