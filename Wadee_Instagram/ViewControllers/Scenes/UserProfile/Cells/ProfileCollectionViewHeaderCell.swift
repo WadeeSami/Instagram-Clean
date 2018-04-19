@@ -14,6 +14,7 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
     let PROFILE_IMAGE_VIEW_WIDTH = 80
     
     var user : User?
+    private var headerCellViewModel: ProfileViewModel!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -115,6 +116,21 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
         return btn
     }()
     
+    
+    
+    //MARK: config method
+    public func configure(withViewModel viewModel: ProfileViewModel){
+        self.headerCellViewModel = viewModel
+       
+        usernameLabel.text = self.headerCellViewModel.userObject?.username
+        if let smallImageUrlString = self.headerCellViewModel.userObject?.userMedia?.href_small , let imageUrl = URL(string: smallImageUrlString) {
+            userProfileImageView.fetchImageFromURL(imageUrl: imageUrl)
+        }
+         userProfileImageView.setImageFrom(name: self.headerCellViewModel.userObject?.username, width: CGFloat(PROFILE_IMAGE_VIEW_WIDTH), height: CGFloat(PROFILE_IMAGE_VIEW_WIDTH))
+
+        
+    }
+    
     //MARK: UI Setup Methods
     
     private func setupProfileImage(){
@@ -125,27 +141,10 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
             profileImageview.width.equalTo(PROFILE_IMAGE_VIEW_WIDTH)
             profileImageview.height.equalTo(PROFILE_IMAGE_VIEW_WIDTH)
         }
-        let usernameLabel = UILabel()
-        usernameLabel.translatesAutoresizingMaskIntoConstraints = false
-        usernameLabel.text = "test"
-        self.addSubview(usernameLabel)
-        usernameLabel.snp.makeConstraints { (make) in
-            make.centerX.equalTo(userProfileImageView.snp.centerX)
-            make.top.equalTo(userProfileImageView.snp.bottom)
-        }
         
     }
     
-    private func fetchProfileImage(){
-//        guard let userProfileImageUrl = self.user?.profileImageUrl else {return}
-//        URLSession.shared.dataTask(with: userProfileImageUrl){ (data, response, error) in
-//            guard let data = data else {return}
-//            let image = UIImage(data: data)
-//            DispatchQueue.main.async {
-//                self.userProfileImageView.image = image
-//            }
-//            }.resume()
-    }
+    
     
     private func setupToolBar(){
         let toolbarStackView = UIStackView(arrangedSubviews: [gridButton, listButton, ribbonButton])

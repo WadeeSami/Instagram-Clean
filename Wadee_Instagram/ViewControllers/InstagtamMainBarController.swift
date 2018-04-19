@@ -35,10 +35,16 @@ class InstagtamMainBarController:UITabBarController{
     
     //MARK: private methods
     func setupViewControllers() {
+        guard let loggedInUser = AuthComponent.getLoggedInUserData() else{
+            print("What a terrible error !!!")
+            return
+        }
         //home
-       
+        
         let homeViewController = HomeViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        homeViewController.homeViewModel = ProfileViewModel()
+        let homeProfileViewModel = ProfileViewModel()
+        homeProfileViewModel.userId = loggedInUser.id
+        homeViewController.homeViewModel = homeProfileViewModel
         
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "home_unselected"), selectedImage: #imageLiteral(resourceName: "home_selected"), rootViewController: homeViewController, relatedCoordinator: nil, relatedViewModel: nil)
         
@@ -69,10 +75,7 @@ class InstagtamMainBarController:UITabBarController{
         let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"), relatedCoordinator: nil, relatedViewModel:nil)
         
         //user profile
-        guard let loggedInUser = AuthComponent.getLoggedInUserData() else{
-            print("What a terrible error !!!")
-            return
-        }
+        
         let profileCoordinator = ProfileCoordinator(with: self)
         profileCoordinator.profileCoordinatorDelegate = self.tabBarCoordinator
         

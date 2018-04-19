@@ -11,6 +11,8 @@ import Foundation
 struct AuthComponent {
     static let AUTH_TOKEN_NAME = "Set-Cookie"
     
+    static var loggedInUserId:Int?
+    
     static func storeAuthToken(authToken:String){
         UserDefaults.standard.set(authToken, forKey: AUTH_TOKEN_NAME)
     }
@@ -24,6 +26,7 @@ struct AuthComponent {
             let user = User(id: id as? Int, username: username as! String, userMedia: nil)
             let encodedUser = try? JSONEncoder().encode(user)
             UserDefaults.standard.set(encodedUser, forKey: "logged_in_user")
+            loggedInUserId = (id as! Int)
         }
         
     }

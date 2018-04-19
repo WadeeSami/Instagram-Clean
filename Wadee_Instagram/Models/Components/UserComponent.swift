@@ -110,7 +110,7 @@ class UserComponent{
         })
     }
 
-    static func getUserInfo(withUserId userId:Int)->User?{
+    static func getUserInfo(withUserId userId:Int, success:@escaping (User)-> ()){
         var user : User?
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/users/\(userId)")
         SimpleNetworkUtility.performAlamofireGetRequest(fromUrl: url, parameters: [:], successHandler: {response in
@@ -121,12 +121,13 @@ class UserComponent{
             }
             if let userJson = json["data"].dictionary{
                  user = User(id: userJson["id"]?.int, username: (userJson["username"]?.string)!, userMedia: nil)
+                success(user!)
             }
             
         }, failureHandler: {error in
             print ("error in fetch user info api")
         })
-        return user
+        
         
     }
 }

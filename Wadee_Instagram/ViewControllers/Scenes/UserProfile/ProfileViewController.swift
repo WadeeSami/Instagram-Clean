@@ -24,16 +24,8 @@ class ProfileViewController:UICollectionViewController{
     //MARK: life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-        self.setupNavigationBar()
-        self.view.backgroundColor = UIColor.white
-        self.collectionView?.backgroundColor = UIColor.white
-        
-        //register cells
-        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ProfileViewController.profileImagesCellID)
-        self.collectionView?.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostCollectionViewCell.PROFILE_COLLECTION_VIEW_CELL_ID)
-        self.collectionView?.register(ProfileCollectionViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ProfileCollectionViewHeaderCell.COLLECTION_VIEW_HEADER_CELL_ID)
-        
+        self.setupUI()
+        self.registerCells()
         profileViewModel?.reloadPostsCollectionViewClosure = { [weak self] in
             self?.collectionView?.reloadData()
         }
@@ -43,9 +35,6 @@ class ProfileViewController:UICollectionViewController{
         super.viewWillAppear(animated)
         profileViewModel?.fetchUserPosts()
     }
-    
-    //MARK: initializer
-    
     
     //MARK: private methods
     private func setupNavigationBar(){
@@ -58,6 +47,20 @@ class ProfileViewController:UICollectionViewController{
         }else{
             self.navigationItem.hidesBackButton = false
         }
+    }
+    
+    private func setupUI(){
+        self.view.backgroundColor = UIColor.white
+        self.setupNavigationBar()
+        self.view.backgroundColor = UIColor.white
+        self.collectionView?.backgroundColor = UIColor.white
+    }
+    
+    private func registerCells(){
+        //register cells
+        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: ProfileViewController.profileImagesCellID)
+        self.collectionView?.register(ProfilePostCollectionViewCell.self, forCellWithReuseIdentifier: ProfilePostCollectionViewCell.PROFILE_COLLECTION_VIEW_CELL_ID)
+        self.collectionView?.register(ProfileCollectionViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: ProfileCollectionViewHeaderCell.COLLECTION_VIEW_HEADER_CELL_ID)
     }
     
     //MARK: handlers and selectors
@@ -80,6 +83,7 @@ class ProfileViewController:UICollectionViewController{
     }
 }
 extension ProfileViewController: UICollectionViewDelegateFlowLayout{
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return (self.profileViewModel?.postsList.count)!
     }
@@ -105,8 +109,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout{
             
         }
 
-        
-        
         return cell!
     }
     
@@ -114,8 +116,9 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout{
 
 extension ProfileViewController{
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileCollectionViewHeaderCell.COLLECTION_VIEW_HEADER_CELL_ID, for: indexPath)
+        let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileCollectionViewHeaderCell.COLLECTION_VIEW_HEADER_CELL_ID, for: indexPath) as! ProfileCollectionViewHeaderCell
         
+        headerCell.configure(withViewModel: self.profileViewModel!)
         return headerCell
     }
     
