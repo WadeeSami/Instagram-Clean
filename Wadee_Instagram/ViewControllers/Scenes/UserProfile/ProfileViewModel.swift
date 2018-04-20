@@ -11,20 +11,19 @@ import  Foundation
 class ProfileViewModel{
     typealias didFetchPosts = () -> ()
     typealias didFetchUserInfo = () -> ()
-    var userId : Int!{
-        didSet{
-            UserComponent.getUserInfo(withUserId: userId, success: {user in
-                DispatchQueue.main.async {
-                    self.userObject = user
-                    print ("fetched Successfully")
-                }
-            })
-        }
-    }
+    var userId : Int!
     public var userObject: User?
     
+    public func getUserInfo(successHandler: @escaping (User)->()){
+        UserComponent.getUserInfo(withUserId: userId, success: {user in
+            successHandler(user)
+        })
+    }
+    
     public var postsList = [Post]()
+    
     public var reloadPostsCollectionViewClosure : didFetchPosts?
+    
     func fetchUserPosts(){
         UserProfileComponent.fetchUserPostImages(userId: self.userId,completion: { (postsList) in
             self.postsList = postsList!
@@ -33,4 +32,5 @@ class ProfileViewModel{
             
         })
     }
+
 }

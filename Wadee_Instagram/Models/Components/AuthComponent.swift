@@ -23,7 +23,7 @@ struct AuthComponent {
     
     static func saveLoggedInUserData(userDict:[String:Any]){
         if let id = userDict["id"] , let username = userDict["username"] {
-            let user = User(id: id as? Int, username: username as! String, userMedia: nil)
+            let user = User(id: id as! Int, username: username as! String, userMedia: nil, in_fellowship: false)
             let encodedUser = try? JSONEncoder().encode(user)
             UserDefaults.standard.set(encodedUser, forKey: "logged_in_user")
             loggedInUserId = (id as! Int)

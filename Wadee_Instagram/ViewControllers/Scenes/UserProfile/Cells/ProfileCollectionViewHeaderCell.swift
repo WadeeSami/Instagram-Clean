@@ -12,6 +12,7 @@ import SnapKit
 class ProfileCollectionViewHeaderCell: UICollectionViewCell{
     static let COLLECTION_VIEW_HEADER_CELL_ID = "CollectionViewHeaderCell"
     let PROFILE_IMAGE_VIEW_WIDTH = 80
+    var profileControllerMode:ProfileViewControllerMode = ProfileViewControllerMode.USER_HOME_PAGE
     
     var user : User?
     private var headerCellViewModel: ProfileViewModel!
@@ -24,6 +25,7 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
         setupUserInfoBarAndUpperSeparator()
         setupEditProfileBtn()
         
+        editProfileBtn.addTarget(self, action: #selector(handleMainButton), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -69,7 +71,6 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
     
     let postsLabel : UILabel = {
         let label = UILabel()
-        label.text = "0\nposts"
         label.numberOfLines = 0
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -109,10 +110,11 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
         let btn = UIButton()
         btn.setTitle("Edit Profile", for: .normal)
         btn.layer.borderWidth=1
-        btn.layer.borderColor = UIColor.black.cgColor
         btn.setTitleColor(UIColor.black, for: .normal)
         btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237, alpha: 1)
+        btn.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
         return btn
     }()
     
@@ -122,12 +124,25 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
     public func configure(withViewModel viewModel: ProfileViewModel){
         self.headerCellViewModel = viewModel
        
-        usernameLabel.text = self.headerCellViewModel.userObject?.username
-        if let smallImageUrlString = self.headerCellViewModel.userObject?.userMedia?.href_small , let imageUrl = URL(string: smallImageUrlString) {
-            userProfileImageView.fetchImageFromURL(imageUrl: imageUrl)
+        self.headerCellViewModel.getUserInfo{ user in
+            self.user = user
+            self.usernameLabel.text = self.user?.username
+            if let smallImageUrlString = self.user?.userMedia?.href_small , let imageUrl = URL(string: smallImageUrlString) {
+                self.userProfileImageView.fetchImageFromURL(imageUrl: imageUrl)
+            }
+            self.userProfileImageView.setImageFrom(name: self.user?.username, width: CGFloat(self.PROFILE_IMAGE_VIEW_WIDTH), height: CGFloat(self.PROFILE_IMAGE_VIEW_WIDTH))
+            
+            self.postsLabel.text = "\(self.headerCellViewModel.postsList.count)\n posts"
+            var editProfileTitle = "Edit Profile"
+            if self.profileControllerMode == ProfileViewControllerMode.DISPLAY_PROFILE_PAGE{
+                if (self.user?.in_fellowship)!{
+                    editProfileTitle = "UnFollow"
+                }else{
+                    editProfileTitle = "Follow"
+                }
+            }
+            self.editProfileBtn.setTitle(editProfileTitle, for: .normal)
         }
-         userProfileImageView.setImageFrom(name: self.headerCellViewModel.userObject?.username, width: CGFloat(PROFILE_IMAGE_VIEW_WIDTH), height: CGFloat(PROFILE_IMAGE_VIEW_WIDTH))
-
         
     }
     
@@ -211,5 +226,23 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
             btn.height.equalTo(34)
         }
         
+    }
+    
+    @objc func handleMainButton(){
+        if self.profileControllerMode == ProfileViewControllerMode.DISPLAY_PROFILE_PAGE{
+            if (self.user?.in_fellowship)!{
+                //unfollow
+                print("unfollow")
+            }else{
+                UserFelloshipComponent.followUser(withUserId: (self.user?.id)!, successHandler: {
+                    print ("followed successfully")
+                    self.editProfileBtn.setTitle("Unfollow", for: .normal)
+                    }, failureHandler: {
+                        print ("coulnd complete fellow ship")
+                })
+            }
+        }else{
+            //do something in edit profile
+        }
     }
 }

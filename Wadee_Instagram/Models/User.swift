@@ -15,10 +15,9 @@ struct User :Codable{
     var id :Int?
     var username:String
     var userMedia:UserMedia?
+    var in_fellowship:Bool = false
     
-//    var propertyListRepresentation : [String:String] {
-//        return ["id" : "\(self.id!)", "username" : username, "userMedia": self.userMedia?.propertyListRepresentation]
-//    }
+
 }
 
 struct UserMedia :Codable{

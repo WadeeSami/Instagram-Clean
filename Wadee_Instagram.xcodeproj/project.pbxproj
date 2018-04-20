@@ -87,6 +87,7 @@
 		58D05ABB203B619E005B0298 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D05ABA203B619E005B0298 /* UIColor.swift */; };
 		58D31F1E207A8EC600FE7E2B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D31F1D207A8EC600FE7E2B /* HomeViewController.swift */; };
 		58D31F21207A927000FE7E2B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D31F20207A927000FE7E2B /* HomeCollectionViewCell.swift */; };
+		58D55C5E2089DDA90016E80C /* UserFellowshipComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D55C5D2089DDA90016E80C /* UserFellowshipComponent.swift */; };
 		58D815762040063000E9F58E /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D815752040063000E9F58E /* Exceptions.swift */; };
 		58D815782040180000E9F58E /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D815772040180000E9F58E /* UIViewController.swift */; };
 		58D8157A204086CE00E9F58E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D81579204086CE00E9F58E /* User.swift */; };
@@ -185,6 +186,7 @@
 		58D05ABA203B619E005B0298 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		58D31F1D207A8EC600FE7E2B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		58D31F20207A927000FE7E2B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		58D55C5D2089DDA90016E80C /* UserFellowshipComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFellowshipComponent.swift; sourceTree = "<group>"; };
 		58D815752040063000E9F58E /* Exceptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
 		58D815772040180000E9F58E /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		58D81579204086CE00E9F58E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				58B89FFE2063BA9D00C75FE2 /* UserPostComponent.swift */,
 				588443EB206D3D4A0016528D /* UserProfileComponent.swift */,
 				581445102075EABA00561F7A /* AuthComponent.swift */,
+				58D55C5D2089DDA90016E80C /* UserFellowshipComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -957,6 +960,7 @@
 				589DB8CD203F154E005CB8CC /* UIView.swift in Sources */,
 				58D05AB4203B601F005B0298 /* LoginViewController.swift in Sources */,
 				58120B862043E713004C9C01 /* ProfileCollectionViewHeaderCell.swift in Sources */,
+				58D55C5E2089DDA90016E80C /* UserFellowshipComponent.swift in Sources */,
 				58E540752052EE6300F461E3 /* PhotoSelectionViewController.swift in Sources */,
 				581445112075EABA00561F7A /* AuthComponent.swift in Sources */,
 				58B89FFF2063BA9D00C75FE2 /* UserPostComponent.swift in Sources */,

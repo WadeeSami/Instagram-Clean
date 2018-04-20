@@ -38,7 +38,8 @@ class UserProfileComponent{
                             
                             if jsonPost["user_info"].exists() {
                                 let user_info_dict = jsonPost["user_info"]
-                                var postUserInfo = User(id:user_info_dict["id"].int ,username: user_info_dict["username"].string!, userMedia:nil)
+                                //TODO: handle fellowship things
+                                var postUserInfo = User(id: user_info_dict["id"].int, username: user_info_dict["username"].string!, userMedia: nil, in_fellowship: false)
                                 if (!user_info_dict["profile_image"].isEmpty ){
                                     let media_dict = user_info_dict["profile_image"]
                                     

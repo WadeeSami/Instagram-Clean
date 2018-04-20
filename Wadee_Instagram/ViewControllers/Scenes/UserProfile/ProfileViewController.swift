@@ -50,7 +50,6 @@ class ProfileViewController:UICollectionViewController{
     }
     
     private func setupUI(){
-        self.view.backgroundColor = UIColor.white
         self.setupNavigationBar()
         self.view.backgroundColor = UIColor.white
         self.collectionView?.backgroundColor = UIColor.white
@@ -118,6 +117,7 @@ extension ProfileViewController{
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileCollectionViewHeaderCell.COLLECTION_VIEW_HEADER_CELL_ID, for: indexPath) as! ProfileCollectionViewHeaderCell
         
+        headerCell.profileControllerMode = self.profileControllerMode
         headerCell.configure(withViewModel: self.profileViewModel!)
         return headerCell
     }

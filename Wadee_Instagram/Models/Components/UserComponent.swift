@@ -79,7 +79,7 @@ class UserComponent{
                 
                 AuthComponent.saveLoggedInUserData(userDict: userData["data"] as! [String : Any])
             }
-
+            
             successHandler()
         }, failureHandler: {error in
             print ("eerrr")
@@ -87,7 +87,7 @@ class UserComponent{
         })
         
     }
-
+    
     static func searchUsersWith(searchTerm:String, successHandler: @escaping ([User])->(), failureHandler: @escaping ()->()){
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/users")
         SimpleNetworkUtility.performAlamofireGetRequest(fromUrl: url, parameters: ["search_term":searchTerm], successHandler: {response in
@@ -99,7 +99,8 @@ class UserComponent{
             }
             if let jsonData = json["data"].array  {
                 for subJson in jsonData {
-                    var user = User(id:subJson["id"].int ,username: subJson["username"].string!, userMedia: nil)
+                    let is_followed = subJson["in_fellowship"].exists() ? subJson["in_fellowship"].bool : false
+                    var user = User(id: subJson["id"].int, username: subJson["username"].string!, userMedia: nil, in_fellowship: is_followed!)
                     user.userMedia = UserComponent.extractUserImage(userInfo: subJson)
                     usersList.append(user)
                 }
@@ -109,7 +110,7 @@ class UserComponent{
             print ("Horrible Error")
         })
     }
-
+    
     static func getUserInfo(withUserId userId:Int, success:@escaping (User)-> ()){
         var user : User?
         let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/users/\(userId)")
@@ -120,7 +121,14 @@ class UserComponent{
                 return
             }
             if let userJson = json["data"].dictionary{
-                 user = User(id: userJson["id"]?.int, username: (userJson["username"]?.string)!, userMedia: nil)
+                let is_followed:Bool
+                if userJson["in_fellowship"] != nil{
+                    is_followed = (userJson["in_fellowship"]?.bool)!
+                }else{
+                    is_followed = false
+                }
+            
+                user = User(id: userJson["id"]?.int!, username: (userJson["username"]?.string)!, userMedia: nil, in_fellowship: is_followed)
                 success(user!)
             }
             

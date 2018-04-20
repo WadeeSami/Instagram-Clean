@@ -36,7 +36,7 @@ class InstagtamMainBarController:UITabBarController{
     //MARK: private methods
     func setupViewControllers() {
         guard let loggedInUser = AuthComponent.getLoggedInUserData() else{
-            print("What a terrible error !!!")
+            print("Could not get logged in user data")
             return
         }
         //home

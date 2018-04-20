@@ -31,6 +31,7 @@ class SearchUsersViewController:UICollectionViewController{
     
     func fetchUsers(){
         UserComponent.searchUsersWith(searchTerm: "", successHandler: {users in
+            //exclude current
             self.userObjectsList = users
             self.collectionView?.reloadData()
         }, failureHandler: {
