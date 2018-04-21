@@ -114,6 +114,16 @@ struct SimpleNetworkUtility : NetworkLayer{
         })
     }
     
+    static func performAlamofireDeleteRequest(fromUrl url:URL, parameters params: [String:String], successHandler: @escaping (alamoSuccessHandler), failureHandler: @escaping failureHandler){
+        Alamofire.request(url, method: .delete, parameters: params, encoding: URLEncoding.default, headers: nil).validate().responseJSON(completionHandler: {response in
+            if response.result.isSuccess{
+                successHandler(response)
+            }else{
+                failureHandler(response.error)
+            }
+            
+        })
+    }
 }
 
 

@@ -27,4 +27,22 @@ class UserFelloshipComponent{
         })
 
     }
+    
+    static func unfollowUser(withUserId userId:Int, successHandler: @escaping ()->(), failureHandler: @escaping()->()){
+        let loggedInUserId = AuthComponent.getLoggedInUserData()?.id
+        let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("users/\(loggedInUserId!)/followers/\(userId)")
+        SimpleNetworkUtility.performAlamofireDeleteRequest(fromUrl: url, parameters: [:], successHandler: {response in
+            let json = JSON(response?.result.value as Any)
+            if let statusCode = json["status_code"].int{
+                if statusCode == 200{
+                    successHandler()
+                }else{
+                    failureHandler()
+                }
+            }
+        }, failureHandler: {error in
+            failureHandler()
+        })
+        
+    }
 }

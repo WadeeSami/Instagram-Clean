@@ -233,10 +233,19 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
             if (self.user?.in_fellowship)!{
                 //unfollow
                 print("unfollow")
+                UserFelloshipComponent.unfollowUser(withUserId: (self.user?.id)!, successHandler: {
+                    print ("unfollowd successfully")
+                    self.editProfileBtn.setTitle("Follow", for: .normal)
+                    self.user?.in_fellowship = false
+                    }, failureHandler: {
+                        print ("couln not complete successfully")
+                        
+                })
             }else{
                 UserFelloshipComponent.followUser(withUserId: (self.user?.id)!, successHandler: {
                     print ("followed successfully")
                     self.editProfileBtn.setTitle("Unfollow", for: .normal)
+                    self.user?.in_fellowship = true
                     }, failureHandler: {
                         print ("coulnd complete fellow ship")
                 })
