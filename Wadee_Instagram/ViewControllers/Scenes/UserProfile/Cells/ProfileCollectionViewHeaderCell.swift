@@ -123,7 +123,7 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
     //MARK: config method
     public func configure(withViewModel viewModel: ProfileViewModel){
         self.headerCellViewModel = viewModel
-       
+        
         self.headerCellViewModel.getUserInfo{ user in
             self.user = user
             self.usernameLabel.text = self.user?.username
@@ -230,25 +230,24 @@ class ProfileCollectionViewHeaderCell: UICollectionViewCell{
     
     @objc func handleMainButton(){
         if self.profileControllerMode == ProfileViewControllerMode.DISPLAY_PROFILE_PAGE{
+            
             if (self.user?.in_fellowship)!{
                 //unfollow
-                print("unfollow")
-                UserFelloshipComponent.unfollowUser(withUserId: (self.user?.id)!, successHandler: {
-                    print ("unfollowd successfully")
+
+                self.headerCellViewModel.unfollowUserWithId(success: {
                     self.editProfileBtn.setTitle("Follow", for: .normal)
-                    self.user?.in_fellowship = false
-                    }, failureHandler: {
-                        print ("couln not complete successfully")
-                        
+                }, failure: {
+                    print ("hello")
+
                 })
+
             }else{
-                UserFelloshipComponent.followUser(withUserId: (self.user?.id)!, successHandler: {
-                    print ("followed successfully")
+                self.headerCellViewModel.followUserWithId(success: {
                     self.editProfileBtn.setTitle("Unfollow", for: .normal)
-                    self.user?.in_fellowship = true
-                    }, failureHandler: {
-                        print ("coulnd complete fellow ship")
+                }, failure: {
+                    print ("failed")
                 })
+
             }
         }else{
             //do something in edit profile

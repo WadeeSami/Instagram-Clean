@@ -18,10 +18,9 @@ class UserPostsComponent{
                 encodedMedia.append(UIImageJPEGRepresentation(image, 0.5)!)
             }
         }
-        let postObject = Post(id: -1, content: content, media: encodedMedia, mediaObjects: [], postUser: nil)
-        print (postObject)
-        
-        let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("/posts")
+        _ = Post(id: -1, content: content, media: encodedMedia, mediaObjects: [], postUser: nil)
+        let userId = AuthComponent.getLoggedInUserData()?.id
+        let url = SimpleNetworkUtility.baseUrl.appendingPathComponent("users/\(String(describing: userId!))/posts")
         
         SimpleNetworkUtility.performMultipartRequest(fromUrl: url, parameters: ["content":content],images:encodedMedia, successHandler: {data in
             successHandler()

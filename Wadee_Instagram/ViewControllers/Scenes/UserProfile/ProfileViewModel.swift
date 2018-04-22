@@ -17,9 +17,28 @@ class ProfileViewModel{
     public func getUserInfo(successHandler: @escaping (User)->()){
         UserComponent.getUserInfo(withUserId: userId, success: {user in
             successHandler(user)
+            self.userObject = user
         })
     }
     
+    public func unfollowUserWithId(success: @escaping ()->(), failure: @escaping ()->()){
+        UserFelloshipComponent.unfollowUser(withUserId: (self.userObject?.id)!, successHandler: {
+            print ("unfollowd successfully")
+            self.userObject?.in_fellowship = false
+            success()
+        }, failureHandler: {
+            failure()
+        })
+    }
+    
+    public func followUserWithId(success: @escaping ()->(), failure: @escaping ()->()){
+        UserFelloshipComponent.followUser(withUserId: (self.userObject?.id)!, successHandler: {
+            self.userObject?.in_fellowship = false
+            success()
+        }, failureHandler: {
+            failure()
+        })
+    }
     public var postsList = [Post]()
     
     public var reloadPostsCollectionViewClosure : didFetchPosts?
@@ -32,5 +51,6 @@ class ProfileViewModel{
             
         })
     }
-
+    
+    
 }

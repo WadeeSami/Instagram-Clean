@@ -18,9 +18,11 @@ class HomeViewController:UICollectionViewController{
         self.collectionView?.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.HOME_VC_CELL_ID)
         setupNavBar()
         self.collectionView?.backgroundColor = UIColor.white
-        
+        self.setupRefreshControl()
         homeViewModel?.reloadPostsCollectionViewClosure = { [weak self] in
+            self?.collectionView?.refreshControl?.endRefreshing()
             self?.collectionView?.reloadData()
+            
         }
     }
     
@@ -70,9 +72,24 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
     
         if let post_user_media = self.homeViewModel?.postsList[indexPath.row].postUser?.userMedia, let imageUrl = URL(string: post_user_media.href_small){
             cell.profileImage.fetchImageFromURL(imageUrl: imageUrl)
+        }else{
+            cell.profileImage.setImageFrom(name: self.homeViewModel?.postsList[indexPath.row].postUser?.username, width: 50, height: 50)
         }
         return cell
     }
     
+    
+}
+
+extension HomeViewController{
+    @objc func handleRefreshControl(){
+        self.homeViewModel?.fetchUserPosts()
+    }
+    
+    private func setupRefreshControl(){
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefreshControl), for: .valueChanged)
+        self.collectionView?.refreshControl = refreshControl
+    }
 }
 

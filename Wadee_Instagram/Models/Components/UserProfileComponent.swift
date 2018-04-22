@@ -16,7 +16,7 @@ class UserProfileComponent{
         Alamofire.request(
             postURL,
             method: .get,
-            parameters: [:])
+            parameters: ["fetch_fellowship_posts":true])
             .validate()
             .responseJSON { (response) -> Void in
                 

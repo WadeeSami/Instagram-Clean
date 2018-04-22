@@ -32,14 +32,14 @@ class UserComponent{
         }, failureHandler: {error in
             print(error!)
         })
-        let loginEndpoint = InstagramAPI.signup
-        let response = loginEndpoint.testingData
-        let res = try? JSONSerialization.jsonObject(with: response, options: []) as! [String:Any]
-        if res!["status_code"] as! Int != 200{
-            handler(nil, InstagramAPIException.UserAlreadyExists)
-        }else{
-            handler(nil, nil)
-        }
+//        let loginEndpoint = InstagramAPI.signup
+//        let response = loginEndpoint.testingData
+//        let res = try? JSONSerialization.jsonObject(with: response, options: []) as! [String:Any]
+//        if res!["status_code"] as! Int != 200{
+//            handler(nil, InstagramAPIException.UserAlreadyExists)
+//        }else{
+//            handler(nil, nil)
+//        }
     }
     
     static func setUserLoginStatus(loggedIn:Bool){
