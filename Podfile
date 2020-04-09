@@ -10,6 +10,8 @@ target 'Wadee_Instagram' do
   pod 'SnapKit', '~> 4.0.0'
   pod 'SwiftyJSON'    
   pod 'AlamofireImage'
+  pod 'SVProgressHUD'
+  
   target 'Wadee_InstagramTests' do
     inherit! :search_paths
     # Pods for testing

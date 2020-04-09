@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 
+
 class HomeCollectionViewCell:UICollectionViewCell{
     static let HOME_VC_CELL_ID = "home_controller_cell_id"
     let cellImageView : UIImageView = {
@@ -98,7 +99,7 @@ class HomeCollectionViewCell:UICollectionViewCell{
         self.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(profileImage.snp.centerY)
-            make.left.equalTo(profileImage.snp.right)
+            make.left.equalTo(profileImage.snp.right).offset(4)
             
         }
         
@@ -132,12 +133,16 @@ class HomeCollectionViewCell:UICollectionViewCell{
         }
         
         self.addSubview(captionLabel)
+
         captionLabel.snp.makeConstraints { (make) in
             make.left.right.equalTo(self)
-            make.top.equalTo(stackView.snp.bottom)
-            make.bottom.equalTo(self)
+            make.top.equalTo(bookmarkBtn.snp.bottom)
+            //make.bottom.equalTo(self)
+            make.height.equalTo(20)
         }
-        
+        captionLabel.numberOfLines = 0
+        captionLabel.lineBreakMode = .byWordWrapping
+//        self.backgroundColor = UIColor.yellow
     }
     
     required init?(coder aDecoder: NSCoder) {

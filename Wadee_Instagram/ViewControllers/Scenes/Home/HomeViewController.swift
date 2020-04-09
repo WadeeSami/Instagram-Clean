@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import SVProgressHUD
 
 class HomeViewController:UICollectionViewController{
     var homeViewModel: ProfileViewModel?
@@ -22,12 +23,14 @@ class HomeViewController:UICollectionViewController{
         homeViewModel?.reloadPostsCollectionViewClosure = { [weak self] in
             self?.collectionView?.refreshControl?.endRefreshing()
             self?.collectionView?.reloadData()
+            SVProgressHUD.dismiss()
             
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        SVProgressHUD.show()
         self.homeViewModel?.fetchUserPosts()
     }
     
@@ -46,7 +49,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
         var height :CGFloat = 50 + 8+8
         height += self.view.bounds.width
         height += 50
-        height += 80
+        height += 50
         return CGSize(width: self.view.frame.width, height: height)
     }
     

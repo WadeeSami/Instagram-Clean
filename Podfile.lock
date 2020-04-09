@@ -3,20 +3,23 @@ PODS:
   - AlamofireImage (3.3.0):
     - Alamofire (~> 4.5)
   - SnapKit (4.0.0)
+  - SVProgressHUD (2.2.2)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - SnapKit (~> 4.0.0)
+  - SVProgressHUD
   - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: febfdc9e6395b45740df2046c455d86148a56036
+PODFILE CHECKSUM: 7bad17d34fa7dc49047fb45e85e985c43a86b64d
 
 COCOAPODS: 1.3.1

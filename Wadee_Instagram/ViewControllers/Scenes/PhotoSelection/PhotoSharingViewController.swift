@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import SVProgressHUD
 
 class PhotoSharingViewController:UIViewController{
     //MARK: coordinator
@@ -88,9 +89,11 @@ class PhotoSharingViewController:UIViewController{
             self.textView.shakeView()
             return
         }
+        SVProgressHUD.show()
         DispatchQueue.global(qos: .userInteractive).async {
             UserPostsComponent.addUserPost(with: [self.sharedImage!], andContent: content, successHandler: {
                 print("dismissing")
+                SVProgressHUD.dismiss()
                 self.coordinator?.didFinishPostingImage(fromPhotoSharingViewController: self)
                 
             }, failureHandler: {
